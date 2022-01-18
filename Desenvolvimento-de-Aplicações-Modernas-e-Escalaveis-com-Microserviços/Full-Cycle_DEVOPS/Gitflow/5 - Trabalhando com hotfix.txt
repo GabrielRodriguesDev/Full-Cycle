@@ -1,0 +1,40 @@
+Trabalhando com hotfix {
+    Processo de hotfix (Correção de bugs) {
+        Sempre que realizarmos uma correção o hotfix tem que atualizar tanto a master
+        quanto a develop, ambas as branch tem que andar juntas, para que não haja problema
+        posteriormente. Esse problema pode levar a erros em equipes que usam o git flow e pull request
+
+        Lembrando também que o hotfix é baseado na master, portanto só deve ser usado para
+        ajustar bug em produção, não em ambiente de desenvolvimento (develop)
+    }
+    Sequencia de comandos {
+        - git checkout develop
+
+        - Criei um arquivo index.html
+
+        - git add .
+        
+        - git commit -m 'index'
+
+        - git push origin develop
+
+        - Vamos imaginar que meu index.html que foi criado está com um bug
+
+        - git flow hotfix start 0.1.1 //Criando repositório de hotfix
+            Gerei o hotfix com um número pois o hotfix no fim sempre gera uma tag, 
+            O hotfix sempre é gerado com base na master, portanto esse repo que estou não possui o arquivo
+            com problema o index.html
+
+        - Ao realizar o git flow finish o git flow, automaticamente vai gerar um merge para
+        master e develop.
+
+        - Se estivermos trabalhando com pull request isso vai gerar merge desnessários.
+
+        - Recomendação é que se use o git flow pela métodologia, e nunca realize os finish.
+        Faça os pull request e delete as branchs manualmente após o merge do pull request
+
+
+        
+
+    }
+}

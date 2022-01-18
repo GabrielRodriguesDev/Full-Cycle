@@ -1,0 +1,39 @@
+Injeção de Dependencia (ASP.NET) {
+    Dependência é toda instância de uma classe feita por outra classe
+        Exemplo {
+            Class Program {
+                var novaDependencia = new Dependencia(); 
+            }
+        }
+    
+    Porque usar injeção de dependência {
+        - Principio inversão de dependência. {
+            Conceito do SOLID - D
+        }
+
+        - Baixo Acoplamento {
+            Quando trabalhamos com DI não temos um baixo acoplamento entre as classes
+            no exemplo a cima, caso eu precise trocar a classe "Dependecia"
+            vou precisar caçar no código todo o "new Dependencia()" e alterar pela minha
+            nova classe.
+        }
+    }
+
+    Ciclo de vida das instância geradas pela DI {
+        - Sigleton {
+            - Uma instância única durante todo o clico de vida da aplicação.
+            * Atenção a problema de thread e concorrência, como Race Condition.
+        }
+
+        - Scoped {
+            - Duranção de um escopo (que pode ser definido pelo programador ou não).
+            - Por padrão o ASP.NET gera um escopo por request. cria um novo a cada request
+            feita.
+            - Uso de IServiceFactory para definir um escopo
+        }
+        - Transient {
+            - Uma instância por injeção, uso único.
+            - Forma mais segura de usar.
+        }
+    }
+}

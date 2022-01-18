@@ -1,0 +1,62 @@
+Gitflow na prática {
+    Após instalar o git flow, iniciamos o uso na "prática", criado um repositório com o git flow,
+    e trabalhando com a suas estruturas.
+
+    Sequencia de comandos {
+        - git flow init   //Iniciando um repositório git flow
+            Após executar o comando o terminal vai pedir algumas confirmações, 
+            para nomes de branch, deixamos tudo como default (conforme  o gitflow já sugere),
+            clicando em enter para prosseguir
+
+            Após o termino de criação do repositório, temos duas branch criadas,
+            a branch develop e master
+        
+        - git flow feature start register //git flow {prefixo gitflow} feature {tipo} start {prefixo gitflow} register {nome (geralmente o nome da funcionalidade)}
+            Criando uma nova branch feature/register baseado na branch em que estava (nesse caso develop)
+            em seguida ele já inicia o uso da nova branch. Então a partir dessa criação podemos "criar a nossa feature",
+            e assim que finalizarmos precisamos finalizamos essa branch de feature/regiter
+
+        - Nesse momento criamos um arquivo simples register.html dentro do repositório e o sistema passa a mapear esse arquivo,
+            então a partir de agora tenho mudanças na minha branch a serem commitadas.
+
+        - git status //Consigo visualizar o status da minha branch e verificar que tenho um novo arquivo pendente o register.html
+
+        - git add . //Adicionando todos os arquivos
+
+        - git commi -m "Adicionando register" //Commitando as mudanças (na branch em que estou, no caso feature/register)
+
+        - Após o commit "terminamos a nossa feature" portanto preciso finalizar essa feature e passar minhas mudanças para a branch develop
+
+        - git flow feature finish register // Após esse comando automaticamente ele vai realizar um merge com a branch develop,
+            em seguida vai remover a branch feature/register
+
+        - No momento estamos dentro da branch develop, ela já está com a nova versão gerada pela ultima feature, nesse momento queremos gerar uma nova realese do sistema.
+
+        - git flow release start 0.1.0 //git flow {prefixo gitflow} realease {tipo} start {prefixo gitflow} 0.1.0 {version}
+            Criando uma nova branch release/0.1.0 baseado na branch em que estava (nesse caso develop)
+            Em seguida ele já inicia o uso da nova branch
+        
+        - Nesse momento ele eu posso fazer alguns ajustes ainda como alterar alguns arquivos e etc, após isso claro preciso fazer os commits, mas caso não tenha nada a adicionar,
+         posso dar um git flow finish e ele vai fazer o merge com a master e remover a branch de realease em seguida.
+
+        - git flow realease finish '0.1.0' //Nesse momento o git flow vai realizar o merge com a master em seguida vai deletar a branch release/0.1.0
+            Ao realizar a merge com a master ele pede para escrever uma mensagem para a tag do merge
+        
+        - Nesse momento a master já possui a nova release, mas supondo que a versão em produção está com problemas e precisamos não realizar uma feature e sim um hotfix (ajuste)
+
+        - git flow hotfix start ajustando_teste // //git flow {prefixo gitflow} hotfix {tipo} start {prefixo gitflow} ajustando_teste {name}
+            Criando uma nova branch hotfix/ajustando_teste baseado na master em seguida colocando a nova branch hotfix/ajustando_teste para uso.
+
+        - Após as mudanças de ajuste, precisamos passar isso para a branch develop portanto precisamos fazer um finish
+
+        - git flow hotfix finish ajustando_teste
+            Antes de realizar um merge ele vai pedir para escrevemos uma mensagem para o merge, vamos manter a pdrão,
+            após a  mensagem ele vai pedir para que passamos a tag, nesse caso é muito importante (mas não obrigatorio (boas praticas)) que escrevamos uma nova tag
+            com a master e em seguida remover a branch hotfix/ajustando_teste
+             
+             Após pesquisa notei que podemos adicionar a tag antes de finalizar a branch
+             git tag -a v0.1.2 -m "release_added"
+
+        - 
+    }
+}

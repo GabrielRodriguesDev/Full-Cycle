@@ -1,0 +1,25 @@
+Docker push {
+    Sequencia de comandos {
+        1 - docker login {
+            Realizando o login no docker hub, caso estivessemos se conectando a outro hub, como por exemplo
+            do GCP seria necessário passar mais informações nos parametros de conexão.
+            Por ser o docker hub ele já faz o login automaticamente se eu já tiver logando com o docker desktop
+        }
+        2 - docker tag my_nginx:latest gabrielrodriguesdev/my_nginx:version1.0  {
+            Criando uma nova imagem a partir de uma já existente colocando no formato correto
+            {{username}}/{{imagename}}:{{version}} para subir ao docker hub
+        }
+        3 - docker push gabrielrodriguesdev/my_nginx:version1.0 {
+            Subindo  nova imagem com o formato correto ao docker hub
+        }
+        Observação  - {
+            Caso eu faça alguma mudança na mesma imagem e eu venha a subir ela, vai ser necessário alterar tag
+            segundo o exemplo anterior seria :version2.0
+            Com isso o docker iria identificar que é a mesma imagem porém com algumas mudanças, e vai lhe informar aonde
+            ocorreu essas mudança.
+        }
+        4 - docker run -d --name=nginx -p 8080:80 gabrielrodriguesdev/my_nginx:version1.0 {
+            Criando um container a partir de uma imagem do docker hub (a que subimos agora pouco)
+        }
+    }
+}

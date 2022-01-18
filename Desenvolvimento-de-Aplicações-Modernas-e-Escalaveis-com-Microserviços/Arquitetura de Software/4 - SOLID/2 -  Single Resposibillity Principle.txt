@@ -1,0 +1,17 @@
+Single Resposibillity Principle {
+    "Uma classe só deve ter uma unica responsabilidade"
+
+    - Uma classe só deve ter um unico motivo para mudar, caso ela tenha mais de um motivo 
+    estamos ferindo esse principio.
+
+    - Um exemplo de classe que tem mais de um motivo para mudar é classes que são "Entidades" e 
+    também fazem conexão com o BD, sendo que o processo seria ter uma classe separada (Repository) para isso.
+
+    Conclusão {
+        Em minha opnião é o principio mais facil de diagnosticar quando está sendo ferido, porque sabemos
+        quando estamos misturando assuntos dentro de uma classe. 
+
+        Essa boa pratica visa previnir que assuntos se cruzem dentro de uma classe, para que uma mudança
+        na classe não gere problemas em outras questões que não estão relacionada a essa "responsabilidade".
+    }
+}

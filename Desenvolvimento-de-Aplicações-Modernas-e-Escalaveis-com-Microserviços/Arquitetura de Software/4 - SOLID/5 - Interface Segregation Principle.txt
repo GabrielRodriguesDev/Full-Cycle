@@ -1,0 +1,9 @@
+Interface Segregation Principle {
+    "Uma classe não é obrigada a implementar interfaces que ela não utilizará" 
+
+    - Muitas vezes precisamos usar alguma interface no qual só vamos usar alguns métodos dela
+    por padrão implementamos todos os métodos e os que não precisamos, geralmente deixamos em branco. 
+    Essa atitude fere o principio da Interface Segregation Principle (I), o correto é criarmos uma nova interface
+    abstrair os métodos que serão usados e implementamos essa nova interface na classe. Podemos implementar mais 
+    de uma interface em uma classe, então podemos abstrair da melhor forma possivel.
+}

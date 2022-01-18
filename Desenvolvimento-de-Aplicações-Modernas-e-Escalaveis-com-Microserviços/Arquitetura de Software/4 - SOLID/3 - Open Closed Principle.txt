@@ -1,0 +1,48 @@
+Open Closed Principle {
+    "Toda a classe tem que ser aberta para extensão e fechada para modificação"
+
+    - Essa boa pratica friza o uso da POO pois, uma classe ela não tem que ficar sendo alterada devido a novas
+    features e sim deve ser extendida (herdada) para auxiliar nessas novas features, garantindo assim um escopo 
+    fechado para uso (caso venha a ter problema, vai ser na extensão, não na classe já existente)
+
+    Exemplo - Correto{
+
+
+        abstract class Video {
+             abstract public function calcularInteresse();
+             //Classe e funcão abstrata serve apenas de modelo para herança, não é possivel instanciar
+        }
+
+        Class Movie extends Video {
+            public function calcularInteresse() {
+                //Faço o calculo do interesse para a instacia de Movie (Interesse Movie)
+            }
+        }
+
+        Class TVShow extends Video {
+            public function calcularInteresse() {
+                //Faço o calculo do interesse para a instancia de TVSHOW (interesse TVSHOW)
+            }
+        }
+        /* Caso venha a ter mais tipos, não preciso ficar alterando a classe abstrata, apenas crio uma nova classe
+        com esse novo tipo e extendo da classe "Pai" para ter a herança e operar da mesma forma */
+    }
+
+    Exemplo - Ferindo a boa pratica {
+        
+        Clas Video {
+            private type;
+            
+            public function calcularInteresse(){
+                if(this.type == "Movie") {
+                    //Calcula interesse em Movie
+                }elseif(this.type == "TVShow") {
+                    //Calcula interesse baseado em TVshow
+                }
+            }
+        }
+    }
+
+
+
+}

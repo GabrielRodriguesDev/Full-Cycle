@@ -1,0 +1,52 @@
+Networks {
+
+
+    Sequencia de comandos {
+        1 - docker network ls {
+            Lista as redes disponiveis no docker
+        }
+
+        2 - docker run -d --name nginx1 nginx {
+            Criando container a partir da imagem do nginx
+        }
+         3 - docker run -d --name nginx2 nginx {
+             Criando outro container a partir de uma imagem nginx
+         }
+         4 - docker exec -it nginx1 bash {
+             Entrando no modo exec no container nginx1
+         }
+         5 - apt-get update {
+             Atualiza os pacotes disponiveis no container nginx1
+         }
+         6 - apt-get install iputils-ping {
+             Instalando lib para fazer ping do nginx1
+         }
+         7 - docker network inspect bridge {
+             Inspecionando os container com a network bridge, com isso conseguimos visualizar os ips dos containers
+         }
+         8 - ping {endereço Ip} {
+             Dentro do modo exec de um container se pingarmos algum ip (ips de containers que visualizamos ao executar o network inspect)
+         }
+         9 - network create -d bridge my_network {
+             Criando uma rede do tipo bridge
+         }
+         10 - docker run -d --name nginx4 --net=my_network nginx  &&  docker run -d --name nginx4 --net=my_network nginx  {
+             Criando dois novos containers passando a rede criada (my_network) utilizando a imagem do nginx
+         }
+         11 - docker exec -it nginx3 bash {
+             Entrando no modo exec no container nginx3
+         }
+         12 - apt-get update {
+             Atualiza os pacotes disponiveis no container nginx3
+         }
+         13 - apt-get install iputils-ping {
+             Instalando lib para fazer ping do nginx3
+         }
+         14 ping nginx4 {
+             Pigando o container nginx4. O docker só gera resolução de nome, quando criamos uma rede
+             e configuramos os containers sobre essa rede "criada", por default o docker não faz resolução de nome.
+         }
+         
+                 
+    }
+}

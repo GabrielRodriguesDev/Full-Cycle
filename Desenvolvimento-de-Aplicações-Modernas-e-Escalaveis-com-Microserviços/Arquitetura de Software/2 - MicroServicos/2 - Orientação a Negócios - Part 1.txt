@@ -1,0 +1,56 @@
+Microservicex - Martin Fowler {
+    Orientação a Negócios {
+        Caracteristicas {
+            Componentização via Serviços {
+                "Componente é uma unidade de software idependente que pode ser substituida ou atualizada."
+                Componentes externos (serviços)  que se comunicam a fim de servir ou processar algo.
+                
+                Desvantagens {
+                    - Chamadas externas são mais custosas do que chamadas locais {
+                        Acionar um componente externos é mais custoso e lento do que chamar um componente local que é como o monolito trabalha.
+                    }
+                    - Cruzamento entre componentes pode ser tornar complexo {
+                        Em um projeto é necessário casar muito bem os processos, em que momento cada serviço vai ser chamado,
+                        para que não haja erro.
+                    }
+                    - Transações entre serviços são "grandes desafios" {
+                        Todo o ciclo de vida de um processo tem que ser bem estruturado, pois ele precisa ter um inicio, meio e fim,
+                        e cada etapa tem que ser inspecionada ou até mesmo validada por outro serviço   
+                    }
+                    - Mudanças bruscas em regras de negócio podem afetar diversos serviços tornando o processo dificil de ser refeito. {
+                        Serviços se comunicam a fim de processar algo, caso um serviço seja mudado a comunição deve ser mudada portanto acaba sendo um processo custoso,
+                        alterar todos os serviços para que eles agora trabalhem com base nessa mudança.
+                    }
+                }
+            }
+
+            Organização em torno do negócio {
+                - Conceito importante {
+                        Um projeto é baseado em um ou mais produtos que trabalham em diferentes contextos {
+                            O produto tem que ser pensado com base no negócio do seu usuario (conceito de DDD),
+                            portanto ao organizar, quebrar os serviços, pense em quebrar visando o negocio do usuario, não questões técnicas. 
+                            "Cada serviço é um produto diferente"
+                    }
+                - Times de desenvolvedores por produto {
+                    Como cada serviço é um produto, atua sobre um problema em especifico, muitas empresas separam os times por produto (serviços),
+                    assim garantindo que aquele time fale a mesma lingua sobre o mesmo produto.
+                }
+                - Muitas empresas tratam os times como "squads" {
+                    Squads são um grupo de profissionais que juntos conseguem atender um produto.
+                }
+                - Cada squad é multidisciplinar {
+                    Cada squad possui integrantes o suficiente para gerar uma aplicação do inicio ao fim,
+                    um dev front outro back, um de infra ou DBA... etc
+                }
+                - Cada squad é resposanvel por um ou mais produtos {
+                    Cada squad é reponsavel por alguns produtos, pois já conhecem a liguagem sobre o produto, então conseguem escalar e dar manutenção de forma mais performatica.
+                }
+                - Cada produto pode ter um ou mais serviços envolvidos {
+                    Um produto pode se comunicar com um ou mais serviços, para realizar o seu processamento.
+                }
+
+                }
+            }
+        }
+    }
+}

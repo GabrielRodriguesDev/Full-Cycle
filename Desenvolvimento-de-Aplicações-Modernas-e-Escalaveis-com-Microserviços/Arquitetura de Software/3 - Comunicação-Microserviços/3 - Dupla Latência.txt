@@ -1,0 +1,13 @@
+Dupla Latência {
+    Ao usar a arquitetura de microserviços,  é necessário ter em mente a dupla latência.
+
+    Ao desenvolver um projeto baseado em microserviços é imperativo que seja medido a velocidade e tempo que um serviço pode demorar a responder uma request,
+    pois um cliente pode fazer uma requisão a um serviço A que vai ao serviço B confirmar outra questão que por fim cai em uma fila,
+    voltando ao serviço A e depois disso retornando ao cliente. Notamos que o caminho de uma request em uma arquitetura de microserviços pode ser complexa,
+    e tornando o processo lento, diferente de um sistema monolitico que tem tudo ali local.
+
+    Devido a isso é necessário metricar bem o tempo de resposta a estratégia de fluxo de dados e comunição de processos entre serviços,
+    decidir quando usar uma comunicação sincrona (Request e reponse direto) ou quando usar assincrona (mensageria (filas)).
+
+    O uso de microserviços possui seus prós e contras, por isso esse caso deve ser muito bem metricado para que não gere problemas com o crescimento.
+}

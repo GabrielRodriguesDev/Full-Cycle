@@ -1,0 +1,6 @@
+Trabalhando com o SourceTree {
+    SourceTree é uma ferramenta que permite que nós consigamos visualizar os commits que ocorreram e também nos auxilia a trabalhar com o 
+    gitflow.
+
+    A visualização é parecida com o git graph
+}

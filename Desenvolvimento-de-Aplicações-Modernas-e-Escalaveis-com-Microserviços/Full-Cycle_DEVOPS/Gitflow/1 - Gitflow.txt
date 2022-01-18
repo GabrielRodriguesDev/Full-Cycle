@@ -1,0 +1,111 @@
+Gitflow {
+    Conceito: "Gitflow é um processo que visa utilizar o git como ferramenta para gerenciar,
+    a criação de features, correções de bugs e realeases.
+
+    Importância da padronização do processo de desenvolvimento {
+        Geralmente os devs utilizam branches para lidar com novas features ou bugs,
+        como nesses exemplos {
+            git checkout -b formulario_de_registro
+            git checkout -b bug_01
+            git push origin master
+
+            Simplesmente criam novas branches para alterar aquilo que eles precisam,
+            e após isso estando certo, enviam isso para master.
+        }
+
+        Em um processo mais padronizado podemos utilizar o git em uma equipe dessa forma {
+            git checkout -b feature/registro 
+            git checkout -b hotfix/registro
+            git push origin desenvolvimento
+            git checkout master && git merge develop
+
+            Separar as branches por assunto, após finalizar as mudanças enviar a branch 
+            de tudo que está em desenvolvimento "desenvolvimento", e essa branch vai fazer
+            um merge com a master, assim o procesos fica mais organizado.
+        }
+    }
+
+    Como funciona o Gitflow {
+        Sempre temos dois branches uma branch chamado master e outra chamada develop
+            Master -> Contém o código fonte que está em produção (Nunca commito direto na master)
+            Develop -> Contém o código fonte do que está no ciclo desenvolvimento, incluindo
+                        novas funcionalidades
+
+            Branch Develop {
+                A branch develop é composto por algumas branches, isso significa que algumas
+                branches realizam merge com o develop. Elas são chamadas de branch auxiliares.
+
+                Branches auxiliares {
+
+                    Features {
+                        Novas implementações, toda vez que for iniciar uma nova brach,
+                        feature tenho que fazer isso com base na ultima versão da minha brach develop
+
+                        git checkout develop
+                        git checkout -b feature/register
+                        //Terminei a minha feature
+                        git checkout develop
+                        git merge feature/register
+                    }
+
+                    Realeases {
+                        O realeases, são as versões do "sistema", então em um processo eu crio a branch
+                        realease a partir da brach develop (com base no exemplo acima iriamos fazer isso
+                        após a feature ter realizado o merge com develop). Após criar a branch realease
+                        realizo o merge com a master, garantindo que apenas uma brach realease faça iterações da master.
+
+                        git checkout develop
+                        git checkout -b realease/1.0.0
+                        //Criando brach sobre a versão 1.0.0
+                        git checkout master
+                        git merge realease/1.0.0
+                        //O Master pegou o ultimo commit do realse e realizou o merge
+                    }
+
+                    Hotfix {
+                        O hotfix, são brach criadas com intuito de correção de bugs.
+                        Essa brach pode ser gerada a partir da master ou da develop, vai depender
+                        se o problema estiver em produção ou só no develop.
+
+                        Em um processo de problema de produção criariamos a branch hotfix a partir da ultima realease,
+                        podemos até tirar a partir da master, após realizarmos as mudanças necessárias, temos que 
+                        mergia as informações da branch hotfix (corrigida) com as master e develop.
+
+                        //Após o erro estar corrigido vamos subir uma nova versão
+                        git checkout master
+                        git merge hotfix/recurso
+                        //Realizamos o merge na master
+                        git checkout develop
+                        git hotfix/recurso
+                        //Após realizar os merges necessários, podemos deletar essa branch
+                        git brach -D hotfix/recurso
+                    }
+                }
+            }
+    }
+
+    Extensão Gitflow {
+        Gitflow possui uma extensão para facilitar todo o processo, porém a utilização da mesma
+        é totalmente opcional
+
+        Para iniciar um projeto usando a extensão (Partindo que a extensão está instalada):
+        git flow init
+
+        Exemplos acima porém utilizando o Gitflow {
+            //Develop => Feature
+            git flow feature start feature/register (Automaticamente já está criando uma nova branch sobre a ultima versão do develop)
+            //Terminei a minha feature
+            git flow feature finish feature/register (Automaticamente ele já realiza um merge no develop)
+            
+            //Criando realease sobra a ultima feature
+            git flow realease start 1.0.0 (Automaticamente já está criando uma nova branch sobre a ultima versão de develop)
+            //Vou commitar de fato minha realease
+            git flow realease finish '1.0.0' (Automaticamente já está realizando um merge com a master)
+            
+            //Minha ultima realease estava com um bug
+            git flow hotfix start hotfix/recurso (Automaticamente já está criando a nova branch com base da ultima versão de produção)
+            //Terminei a correção do recurso
+            git flow finish hotfix/recurso (Automaticamente já está realizando o merge com a master e develop e em seguida matando a branch de hotfix)
+        }
+    }
+}

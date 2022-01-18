@@ -1,0 +1,112 @@
+Domain Driven Desing {
+    Caracteristicas {
+        Domínio {
+            "Dominio é o coração do negócio que você está trabalhando. É baseado em um conjunto de idéias,
+            conhecimento e processos de negócio. 
+            Em outras palavras o Domínio é o "CORE BUINESS" - A razão pelo qual o software existir.
+        }
+
+        Exploração de modelos cirativos {
+            DDD preza que os desenvolvedores façam parte do processo de entender o negócio e todos
+            os seus modelos nos mais diversos ângulos ao invés de simplesmente entervistar especialitas do
+            domínio.
+        }
+
+        Definir e falar a linguagem Ubíqua {
+            Linguagem Ubíqua é a linguagem falada no dia a dia no contexto da empresa. É a 
+            linguagem que utiliza as terminologias da realidade do negócio. Um usuario pode ser um cliente
+            dependendo do modelo do negócio do projeto.
+        }
+    }
+
+    3 Pilares do DDD {
+        - Linguagem Ubíqua 
+
+        - Bounded Contexts {
+            "Contextos delimitados, até onde vai cada parte do sistema".
+
+            - Contexto possui suas responsabilidades claramente definidas.
+            - Cada contexto pode ter sua própria linguagem Ubíqua.
+            - Uma forma de conseguir identificar esse contextos é através de histórias e levantamento do escopo
+            do projeto com o "domain expert".
+
+            Exemplo de História {
+                1. Criar uma conta para acessar o sistema
+                2. Faz o Login
+                3. Seleciona o plano de acesso e realiza a assinatura
+                4. Cria o perfil de acesso...
+
+                /* Com esses passos nessa hitórias já conseguimos fazer a delimitação, identificar possivéis 
+                    Entidades como por exemplo "Conta".
+            }
+
+            Modelagem Estratégica - Delimitando Contextos {
+                   
+                Após passar pelos 3 pilares, passamos para a modelagem estratégica aonde vamos mapear as relações entre 
+                os contextos delimitados e os tipos dos domínios.
+
+                - Dominio Principal  {
+                    É o core do mapeamento é o motivo pelo qual todo o resto acontece.
+                }
+
+                - Dominio Generico {
+                    É o dominio que auxilia o pricipal, porém não depende de ninguém. Em um exemplo de um
+                    site de Streamming  o video é o dominio principal, o Pagamento é o dominio genérico
+                    pois ele existe sem o video, posso usar para pagar outras coisas.
+                }
+
+                - Dominio Principal {
+                    No mesmo exemplo do site de Streamming, como podemos achar um video sem os catalogos,
+                    portanto um catalogo de videos seriam um dominio principal.
+                }
+            }
+        }
+
+        - Context Maps {
+            Uma vez que consguimos delimitar todos os contextos, conseguimos criar um mapa que mostra a relação
+            entre esses conceitos.
+        }
+    }
+
+    Patterns de implementação (Domain Model Patterns) {
+        "São padrões de desenvolvimento e estruturação de aplicações cujo o nomínio é o principal foco."
+
+        - Focados em Entidades e Agregadores {
+            Entidades = Coração do contexto (Objeto)
+            Agregadores = Conjunto de Entidades que juntas fazem o mesmo contexto (Pagamento && Transação)
+            onde o Pagamento é a entidade pai.
+        }
+
+        - Objetos de valor {
+            São objetos imutáveis (não mudam), devido a isso não possuem setters, normalmente  a incialização
+            desse objeto se dá através do construtor que é onde passamos os atributos.
+            
+            Exemplo {
+                var endereco = Rua José da Silva, 82, centro, São Paulo 
+                //Variavel comum
+
+                Endereco endereco = construtor("Rua José da Silva, 82, "centro", "São Paulo").
+                //Objeto de valor
+            }
+
+            Conclusão: O uso de Objetos de Valores, garante um melhor realcionamento entre as classes e sua formatação
+            de dados, pois garanto o formato do endereço no exemplo acima, caso seja informado de fora errada,
+            terei um exepction.
+        }
+
+        - Repositórios {
+            - Tem acesso direto a camada de dados
+            - Persiste dados utilizando as Entidades 
+            - Possui os métodos necessários para realizar consultas
+            - Utilize sempre um repositório por agregação
+            - Pode consultar diretamente serviços externos
+        }
+
+        - Serviços de Domínio {
+            - implementar lógica de negócios a partir de definição de um expert de domínio
+            - Trabalha com diversos fluxos de diversas entidades e agregações
+            - Utilizam os repositórios como interface de acesso aos dados
+            - Consomem recursos da camada de infraestrutura como enviar e-mail, disparar eventos, entre outros.
+        }
+    }
+}

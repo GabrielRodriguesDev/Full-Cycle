@@ -1,0 +1,19 @@
+Comunicação entre Microserviços {
+    Minha conclusão sobre o assunto {
+        A comunicação entre os microserviços funciona de uma forma diferente de um sistema monolitico, pois toda essa comunicação é externa,
+        serviços conversando com serviços, já em um monolito essas comunicações acontecem de forma "local", então se vai ser assincrona ou sincrona não acaba importando tanto assim.
+
+        Dentro em uma estrutura de microserviços a entrega de requisições é altamente importante pois ela define o trafego dos processo,
+        faço uma request a um serviço e aguardo uma response.... Mas oque acontece se esse serviço estiver fora do ar, eu perco a minha request? 
+        Bom, com um processo sincrono sim, você acaba perdendo a sua request pois ela não chegou no serviço de destino ou se chegou não foi processada,
+        e quando o serviço voltar ela será perdida na memória. Portanto as entregas tem que ser garantidas, devido a esse cenário (não é o unico motivo mas um dos principais),
+        os microserviços usam o esquema de comunição através de mensageria onde enviamos a request a esse "servidor mensageiro" ele guarda a request, envia ao destino aguarda a response,
+        quando recebe a responde ele nós devolve. 
+
+        Isso é muito mais inteligente, pois não trava o serviço ele pode continuar a sua vida e quando a response tiver pronta o "mensageiro" cuida de receber,
+        além do que, quando enviamos uma request ao mensageiro, não precisamos nos preocupar com mais nada, pois ele cuida de enviar ao destino e caso o destino esteja fora do ar,
+        ele guarda a nossa request e fica aguardando o destino voltar para enviar a request novamente, então a entrega é sempre garantida pode demorar mais que o esperado mas a entrega é garantida.
+    }
+
+    NOTA: Mecanismos de mensageria, muitas vezes são chamados de mecanismos de filas
+}

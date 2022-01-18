@@ -1,0 +1,84 @@
+##Momentos da Arquitetura na História - Software##
+
+Momento{
+    Tradicional {
+        Metodologia de desenvolvimento (Waterfall) {
+            Resumo: Processo "Cascata" onde uma coisa desencadeia outra.
+            Primeiro temos que terminar o passo 1° para iniciar o 2°.... Isso acaba atrasando muito o processo.
+        }
+
+        Tipo aplicações (Monóliticas) {
+            Tudo é um unico sistema integrado um "Monolito", todos os models e conexões estão presente no mesmo core.
+        }
+
+        Infraestrutura (on-premise) {
+            Servidores no próprio local, onde a própria empresa precisa gerenciar.
+        }
+
+    }
+
+    Atual {
+        Metodologia de desenvolvimento (Agile) {
+            Seu foco é atender bem, usando como pilares fases curtas e dinâmicas de desenvolvimento e, principalmente, a flexibilidade para lidar com mudanças no projeto.
+        }
+        Tipo de aplicações (Multi-tier-architecture) {
+            Sistemas multicamadas onde as funções de apresentação (View), processamento (Controller) e gerenciamento de dados (Model) são fisicamente separados.
+            E todas essas camadas se comunicam dando vida ao sistema (pode ter mais de 3 camadas, o comum são essas três).
+        }
+        Infraestrutura (Virtualização) {
+            Máquinas virtuais.
+        }
+    }
+
+    Emergente {
+         Metodologia de desenvolvimento (DevOps / Full Cycle) {
+             
+             Fundindo a parte de operação com o desenvolvimento, conseguindo entregar o software de forma rápida e eficiente.
+
+         }
+
+         Tipo de aplicações (Micro Serviços) {
+             Sistemas arquitetados em microserviços.
+             Um sistema "grande" é divido em pequenos serviços que se comunicam, porém funcionam de forma idependente.
+         }
+
+         Infraestrutura (Container) {
+            Container é uma tecnologia usada para reunir todos os arquivos necessários em um ambiente de tempo de execução. 
+            Uma unidade de container é pequena, facil de ser iniciada, movida ou executada, sendo que podemos moldar o ambiente da forma que quisermos.
+         }
+    }
+
+    Futuro{
+
+        Metodologia de desenvolvimento  (NoOps) {
+            Todo o gerenciamento relacionado e infraestrutura será por conta da nuvem, processo de biulding configurações e etc... Ficará a responsabilidade da nuvem.
+        }
+        
+        Tipo de aplicações (Serveless) {
+            Modelo de arquitetura de sistema nativo em nuvem para a criação de aplicações sem servidores.
+            Os servidores ainda existem nesse modelo, mas eles são abstraidos do processo de desenvolvimento. 
+            O provedor de numvem fica responsavel pelas tarefas de privisionamento, escala de infraestrutura.
+            Os desenvolvedores só precisam empacotar o código em um container para fazer a implantação.
+            Depois da implantação, as aplicações serveless atendem à demanda e aumentam ou diminuem a escala automaticamente de acordo com a necessidade.
+        }
+
+        Infraestrutura ( Public Cloud ) {
+            Todos vão para nuvem, todos vão poder criar sua nuvem e todos vão estár na nuvem, nada local.
+        }
+    }
+
+}
+
+Extras {
+    Cultura - DevOps {
+        DevOps é uma metodologia de desenvolvimento de software que utiliza a comunicação para integrar desenvolvedores (dev) de software e profissionais de infraestrutura (ops) de TI.
+        Em essência, esse modelo aproxima o desenvolvimento da operação com o objetivo de simplificar processos, integrar áreas, alcançar maior qualidade nas entregas e reduzir o tempo de resposta ao cliente.
+    }
+
+    Full Cycle {
+        Este é um termo novo, que foi cunhado há pouco mais de um ano pela Netflix, em um post. No contexto, significa um time responsável por todo o ciclo de desenvolvimento do software, que se preocupa por todas as fases do produto.
+        O ideal, portanto, é que um desenvolvedor consiga entender todo esse ciclo e consiga melhorar as performances também nos testes.
+    }
+}
+
+    

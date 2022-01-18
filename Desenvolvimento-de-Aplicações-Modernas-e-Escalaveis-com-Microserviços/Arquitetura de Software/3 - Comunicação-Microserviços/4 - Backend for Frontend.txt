@@ -1,0 +1,17 @@
+BFF - Backed for Frontend {
+    Conceito {
+        É um padrão de arquitetura que cria layers (camadas),
+        baseadas nos dispositivos (cliente) que está solicitando. 
+        
+        Essa arquitetura foi criada, pois um determinado serviço (endpoint ou API),
+        recebe requisições dos mais diferentes tipos de dispositivos e a resposta é padronizada,
+        sendo a mesma para todos. Porém nem todos esses dispositivos possuem o mesmo poder computacional,
+        então não vai acabar usando todos os dados retornados. 
+
+        O BFF (Backed for Frontend) visa solucionar isso, criando camadas baseadas em dispositivos, 
+        moldando a resposta para cada tipo de dispositivos, otimizando o tempo e esforço no retorno de dados inutéis,
+        a quem não vai usar eles.
+    }
+
+    Referencia: https://samnewman.io/patterns/architectural/bff/
+}

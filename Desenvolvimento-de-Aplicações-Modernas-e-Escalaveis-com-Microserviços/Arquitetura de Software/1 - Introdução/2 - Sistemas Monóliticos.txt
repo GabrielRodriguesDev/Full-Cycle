@@ -1,0 +1,20 @@
+Sistemas Monóliticos {
+    Caracteristicas - Desvantagens{
+        - Tudo dentro do mesmo sistema
+        - Alto acoplamento
+        - Processo de deploy "completo" a cada mudança
+        - Normalmente usa uma tecnologia
+        - Uma mudança afeta todo o sistema
+        - Maior complexidade para times
+
+    Escalando software {
+        Vertical {
+            Conforme a demanda cresce, aumentamos os recursos computacionais.
+        }
+        Horizontal {
+            Conforme a demanda cresce, aumentamos a quantidade de máquinas que "hospedam" nossas aplicações.
+            Um load balance faz o gerenciamento de demanda distribuindo os usuarios ou requisições entre as máquinas.
+        }
+    }
+    }
+}

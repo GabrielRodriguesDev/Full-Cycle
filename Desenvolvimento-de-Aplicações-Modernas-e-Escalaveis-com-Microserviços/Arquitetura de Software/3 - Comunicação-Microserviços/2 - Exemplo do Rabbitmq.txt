@@ -1,0 +1,26 @@
+Mecanismos de filas - RabbitMQ {
+    Caracteristicas - RabbitMQ {
+        - Menssage Broker (Agentes de mensagem)
+
+        - Implementa AMQP (Advanced Message Queuing Protocol)
+
+        - Producers <=> Brokers <=> Cosumers
+
+        - Desacoplamento entre serviços {
+            Com o uso de um mensageiro, não precisamos que um serviço saiba da existencia do outro,
+            apenas que se ele realizar uma request ao mensageiro, uma hora ele vai fornecer a response.
+        }
+
+        - Rápido e Poderoso
+    }
+
+    Funcionamento - Exemplo {
+
+        Producers -> Exchange -> Queue -> Consumer
+
+        1. Producer faz a request ao mensageiro.
+        2. A request chega ao Exchange, que define a qual fila ele vai mandar essa request.
+        3. A Queue (fila) recebe a request e a request aguarda a ser entregue ao consumer.
+        4. Consumer recebe a request, realiza o processamento necessário e devolve a response.
+    }
+}

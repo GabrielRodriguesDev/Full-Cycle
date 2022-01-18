@@ -1,0 +1,36 @@
+Liskov Substitution Principle {
+    " Subclasses podem ser substituidas por suas classes pai"
+
+    - Caso uma subclasse não consiga absorver toda a necessidade da classe pai dela, estamos ferindo esse principio
+
+    Exemplo {
+        
+        Class Movie {
+
+            public function play(){
+                // Play
+            }
+
+            public function IncreaseVolume() {
+                //Aumenta o volume
+            }
+        }
+
+        Class TheLionKing extends Movie { 
+            /*Essa subclasse não fere o principio de Liskov, pois TheLionKing é um filme
+            então pode dar play() e IncreaseVolume() portanto pode substituir a classe pai
+        }
+
+        Class MovieWithoutSound extends Movie {
+            /* Essa subclasse fere o principio de Liskov essa classe ainda é um filme
+            porém é um filme sem som, então pode dar play(), porém não é possivel IncreaseVolume()
+
+            Essa classe "não deve ser" extendida de Movie, pois essa subclasse não consegue substituir
+            a classe pai.
+            
+            Caso eu tente instanciar essa classe e usar o metodo IncreaseVolume() terei um exception,
+            a não ser que eu faça uma gambiarra para resolver isso.
+        }
+
+    }
+}

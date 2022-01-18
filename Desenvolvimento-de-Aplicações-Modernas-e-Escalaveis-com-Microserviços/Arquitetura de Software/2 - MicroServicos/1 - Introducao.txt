@@ -1,0 +1,79 @@
+Microserviços {
+    Oque é um serviço {
+         - Disponibliza informação
+         - Realiza transações
+         - Resolve problemas de negócio
+         - Idependente de tecnologia ou produto
+         - Pode estabelecer comunicação com diversos "clientes"
+
+         * Todas essas caracteriscas de serviços podem ser vistas em API que usamos no dia a dia ou plugins
+         externos ou até mesmo libs...
+    }
+
+    SOA - Arquitetura Orientada a Serviços {
+        Caracteristicas   {
+            - Serviços normalmente são baseados em funcionalidades {
+                Serviços são baseados "geralmente" em partes de grande responsabilidade, pois garantem o reuso do recurso, 
+                em diversos projetos diferentes
+            }
+
+            - Necessidade de ESB (Enterprise Service Bus) {
+                Um barramento de serviço corporativo ( ESB ) implementa um sistema de comunicação entre aplicativos de software que interagem mutuamente em uma arquitetura orientada a serviços (SOA).
+                Portanto é ele que cuida de disponilizar um serviço a outro serviço, garantindo a comunição entre eles. "API das API's".
+            }
+
+            - Single point of failure {
+                Se o ESB cair todos os recursos do sistema cai, pois ele é o centralizador de toda a operação.
+            }
+
+            - Compartilhamento de banco de dados {
+                Vários serviços compartilham o mesmo banco de dados
+            }
+        }
+    }
+
+    Arquitetura baseada em Microserviços {
+        Caracteristicas {
+            - Serviços pequenos que possuem poucas responsabilidades {
+                O objetivo do micro serviço é de fato ser micro, não obter muitas responsabilidades ser direto a um assunto.
+            }
+            - Maior tolerância a falhas {
+                Como os serviços trabalham de forma desentralizada, caso um serviço caia grande parte dos serviços restantes continuaram rodando normalmente,
+                garantindo uma melhor entrega.
+            }
+            - Totalmente Idependente {
+                Ele sozinho consegue resolver os problemas que foi criado para resolver, possui sua própria estrutura, seu BD etc...
+            }
+            - Comunição entre os serviços {
+                Os serviços se comunicam para poder gerenciar as informações e processos internos sobre o sistema.
+                Porém o esquema de comunição sincrona ou assincrona pode ser perigosa, pois caso um serviço caia ele não pode estourar um erro para quem vai se comunicar com ele,
+                diante dessa necessidade é usado as filas, que guardam a requisição na fila até que seja resolvida (quando o serviço voltar a funcionar) e envia uma mensagem de resposta,
+                notificando o sucesso da operação ou retornando o que tem que retornar.
+            }
+        }
+        Microserviços não são para todas as situações {
+            - Arquitetura complexa {
+                São muitos sistemas (serviços) para administrar então é muito mais complexo para a equipe geri-los.
+            }
+            - Custo elevado {
+                Como são muitos sistemas o custo de infra acaba se elevando muito, pois cada sistema (serviço) se resolve sozinho,
+                então precis ter seu próprio servidor, e seu próprio banco de dados.
+            }
+            - Equipes grandes {
+                Como a arquitetura é mais complexa, muitos sistemas para administrar, é necessário possuir uma equipe maior,
+                para que possa dar conta de tudo.
+            }
+            - O sistema precisa ser grande o suficiente para justificar {
+                A solução não pode ser mais complicada que o problema, portanto microserviços precisam ser justificados, pois é algo complexo, é
+                muito retribuidor porém complexo para startar e gerir.
+            }
+            - Gerar problemas que normalmente você não tinha antes {
+                É uma nova arquitetura então são novos desafios a ser encarados.
+            }
+            - Monitoramento complexo {
+                Como são diversos serviços (muitos sistemas), o monitoramento multiplica, e além disso algum serviço pode estar prejudicando o funcionamento dos demais,
+                portanto o monitoramento precisa ser constante sobre todos os serviços para que não haja nenhum problema referente a comunição entre eles.
+            }
+        } 
+    }
+}

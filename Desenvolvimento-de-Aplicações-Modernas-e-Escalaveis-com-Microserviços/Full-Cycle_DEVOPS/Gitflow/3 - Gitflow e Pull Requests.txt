@@ -1,0 +1,75 @@
+Gitflow e Pull Request {
+    Iniciamos um repositório no github e atribuimos ao projeto que estamos usando na aula passada,
+    "Gitflow na prática".
+
+    git remote add origin https://github.com/GabrielRodriguesDev/exmaple-gitflow.git 
+        Adicionando remote
+
+    git push -u origin master
+        Subindo tudo oque estava no repositório para Master
+    
+    git push -u origin develop
+        Subindo tudo oque estava no repositório para branch develop (que nesse momento é criada automaticamente)
+
+    pull request {
+        É basicamente uma forma de você dizer: acabei o meu trabalho, preciso integrá-lo no ramo principal e eis aqui o que eu fiz. Ao utilizar essa funcionalidade, 
+        é gerado um registro no servidor (por exemplo, o GitHub, que é bem popular) que destaca as diferenças de código entre o ramo no qual você trabalhou e o ramo alvo da entrega.
+        Assim fica fácil para o administrador do repositório revisar o seu trabalho.
+        Também dá para iniciar discussões sobre trechos específicos das alterações. Por fim, o próprio git facilita a mesclagem do código. 
+        Isso incentiva a revisão em pares e o trabalho ordenado em equipe, e no caso de projetos open source incentiva também a contribuição de por parte da comunidade.
+    }
+
+    Sequencia de comandos {
+        - git flow feature start esqueceu_senha //Criando branch de feature
+
+        - Adicionando um arquivo chamado senha.html
+
+        - git add .
+
+        - git commit -m "esqueceu a senha"
+
+        - Nesse momento a feature já está pronta, porém não vou realizar um merge direto na develop,
+        sem antes consultar a equipe, portanto vou realizar um pull request.
+
+        - git push origin feature/esqueceu_senha //Subindo e criando a branch com o commit atual.
+
+        - Após realizar o envio da branch, acessamos o github e realizamos uma pull request,
+        para a branch develop e ficamos aguardando o merge sobre a minha pull request 
+
+            Observações {
+                Antes de do merge de fato acontecer, geralmente as equipes tem um check list,
+                que eles executam sobre as pull request a fim de validar um padrão,
+                e nessa mesma pull request colegas de trabalho analisam o código um do outro, isso chamamos geralmente,
+                de reviews, no github podemos adicionar reviewers para fazerem a vericação sobre a pull request
+            }
+
+        - Após concluir toda a verificação podemos realizar o merge
+
+        - Após realizar o merge o prórpio github dá a opção de deletar a branch feature/esqueceu_senha 
+
+
+        - Nesse momento a nossa branch foi removida (através do github), porém nós não realizamos o finish no git flow, e isso é um problema;
+            Diante desse cenário podemos realizar duas abordagens {
+                1. - Não realizar finish, apenas deleter a banch, pois como todo o processo foi realizado no github não tem problema,
+                quando eu for usar a branch develop para criar outra feature só preciso fazer um pull antes.
+                    - git checkout develop 
+                    - git pull origin develop
+                    - git branch
+                    - git branch -d feature/esqueceu_senha
+
+                2 - Realizamos o finish na feature e seguida ele vai vai fazer o merge no develop, realizando um,
+                commit burro porque ele vai enviar a mesma coisa que contém no develop {
+                    Temos que tomar cuidado com essa segunda abordagem pois podemos ter comitado coisa a mais após o pull request.
+                    Então precisamos ter atenção ao realizar finish
+                }
+            }
+
+        - Existe uma forma alternativa de lidar com os pull request e git flow {
+            Após realizar o pull request e ser aceito, ao invés de realizar o merge pelo github,
+            ou pela plataforma de gerenciamento de código, eu realizo um git flow finish que auto-
+            maticamente o git vai identificar que o merge feito pelo git flow é identico do pull request
+            e vai finalizar o pull request, só sendo necessário apagar a branch que subimos com o git push
+        }
+
+    }
+}

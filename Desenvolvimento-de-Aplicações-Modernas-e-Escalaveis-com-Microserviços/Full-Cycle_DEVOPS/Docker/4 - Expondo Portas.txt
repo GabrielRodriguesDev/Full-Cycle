@@ -1,0 +1,30 @@
+Expondo Portas {
+    Sequencia de comandos {
+        1 - docker run -d --name my_nginx nginx: alpine {
+            Criando um novo container com base na imagem nginx com a tag apilne (baixando a versão alpine).
+            -d -> Rodando em background
+            --name -> Criando um nome para o container
+        }
+
+        2 - docker stop my_nginx {
+            Parando um container com base no nome dele
+        }
+
+        3 - docker start my_nginx {
+            Inciando um container parado com base no nome dele
+        }
+
+        4 - docker run -d --name nginx_porta -p 8080:80 nginx:alpine {
+            Criando um novo container com base em uma imagem já baixada, aonde estamos executando o processo em background com o -d,
+            estamos criando um nome para esse novo container com o --name,
+            estamos fazendo o mapeamento de porta para poder se comunicar, onde estou dizendo que a porta 8080 da minha máquina (docker host),
+            vai se comunicar com a porta 80 que é a porta que meu container está rodando.
+            
+            Observações {
+                O prefixo -p gera um mapeamento de rede, no caso do nginx estou dizendo que quando acessar a porta 8080 pela minha máquina
+                (docker host) vou ser redirecionado para a porta 80 do meu container que é onde está rodando o a imagem do servidor nginx
+                caso eu não faça esse redirecionamento a principío não é possivel acessar o container. (pelos conhecimento atuais não).
+            }
+        }
+    }
+}

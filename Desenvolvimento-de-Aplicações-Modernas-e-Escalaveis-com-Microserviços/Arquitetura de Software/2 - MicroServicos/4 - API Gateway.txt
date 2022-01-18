@@ -1,0 +1,10 @@
+Microserviços {
+    API Gateway {
+        "Uma API Gateway recebe todas as chamadas de APIs dos clientes e então roteia para os microserviços correspondentes" (nginx.com)
+
+        "Em alguns casos ela também é responsável por realizar processos de verificação de segurança, como autenticação e autorização.
+        Ao invés de saber todos os end points e portas e etc, usamos o API GATEWAY para resolver essa situação para nós,
+        ele transfere a requisição para onde ela deve ir (destino).
+
+    }
+}

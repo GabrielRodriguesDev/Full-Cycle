@@ -1,0 +1,34 @@
+Dockerfile {
+    É um meio no qual possamos criar imagens a partir de um arquivo de definição, 
+    esse arquivo chama-se Dockerfile.
+
+    Sequencia de comandos {
+        1 - docker build -t test_swoole . {
+            Comando que faz o docker "buildar" uma imagem e estamos criando um nome para essa imagem (-t)
+            que é test_swoole. E estamos colocando um ponto final deixando claro que estamos biuldando uma imagem
+            da pasta em que estou (acessei a pasta via terminal para isso). 
+
+            Caso ele não estivesse na mesma pasta era só passar o caminho
+        }
+
+        2 - docker images {
+            Ao executar conseguimos ver a nossa imagem que foi buildada a partir do docker file, pronta para uso.
+        }
+        
+        3- docker  run -d --name swoole -p 9501:9501 test_swoole {
+            Criando um container a partir da imagem que construimos com o dockerfile
+        }
+
+        4 - docker build -t gabrielrodriguesdev/php-swoole:latest . {
+            "Buildando" uma nova imagem com o nome já no formato para enviarmos ao docker hub
+        }
+
+        5 - docker push gabrielrodriguesdev/php-swoole:latest {
+            Subindo para o docker hub a imagem buildada a partir do dockerfile
+        }
+    }
+
+    Observações {
+        O Dockerfile dessa laboratório está na pasta "Dockerfiles"
+    }
+}

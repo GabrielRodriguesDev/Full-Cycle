@@ -1,0 +1,73 @@
+Semantic Versioning {
+
+    Conceito {
+
+        É um padrão criado, visando facilitar o processo de nomeação das versões da aplicação,
+    para que quando pessoas usem o seu software elas consigam entender, 
+    e o mesmo vale para o contrário.
+    
+    }
+    
+    SEMVER = Semantic Versioning {
+        É formado pela idéia de X Y Z (1.0.1), onde:
+        
+        X -> Major version.
+
+        Y -> Minor version.
+
+        Z -> Path
+
+        X = Major Version {
+            Quando alteramos o "X" (Major Version) queremos dizer que aquela mudança,
+            vai quebrar compatibilidade com odas as versões anteriores.
+            
+            Imagiando que eu tenha uma versão 1.0.0, quando lançar a 2.0.0 significa
+            que tudo que foi desenvolvimento com base na versão 1.0 vai quebrar, devido
+            a 2.0 não ter compatibilidade por ter mudando muita coisa.
+        }
+
+        Y = Minor Version {
+            Quando alteramos o "Y" (Minor Version) significa que estamos relizando mudança,
+            mas tudo ainda será compativel
+
+            Imagine que estou na versão 1.0.0 e lance uma nova verão 1.1.0, isso significa
+            que adicionei uma nova funcioalidade porém as demais ainda continuam funcionando
+            normalmente
+        }
+
+        Z = Patch {
+            O patch "Z" é usado exclusivamente para a correção de bugs
+
+            Estou na versão 1.1.0 aonde encontrei um bug, realizo a correção e subo uma nova 
+            versão que será a 1.1.1, no qual alteramos o ultimo 1 (patch) exemplificando a correção de um bug
+
+            E a qulquer mudança que é feita sobre o Major e Minor Version,
+             o contador da patch é zerado.
+        }
+
+        Guia de estilo {
+            - Não pode possuir números negativos
+            - Uma vez que uma versão é gerada, não é possivel mais fazer modificações
+            - Major que comece com 0.y.z é publicamente instável e compatibilidade podem ser quebradas {
+                Isso significa que não me preocupo com compatibilidade é uma versão instavél, geralmente
+                inicio de projeto.
+            }
+
+        Metadados {
+            **Isso não é uma regra do SEMVER, mas sim uma boa prática usado pelos 
+            **desenvolvedores.
+
+            alpha = em desenvolvimento sem se preocupar com testes unitários antigos.
+            beta = em desenvolvimento, mas os teste unitários antigos são válidos.
+            rc1 (candidato de release) = testes para novas funcioalidades estão válidos
+            rc2 = mais testes devem ser criados
+            rc3 = mais testes
+            
+            Como funciona com o SEMVER {
+                1.0.0 alpha, 1.0.0 aplha.1
+            }
+        }
+        }
+    }
+
+}

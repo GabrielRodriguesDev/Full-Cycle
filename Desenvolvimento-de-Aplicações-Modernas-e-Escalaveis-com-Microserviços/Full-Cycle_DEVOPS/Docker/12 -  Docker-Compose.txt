@@ -1,0 +1,44 @@
+Docker-Compose {
+    
+    "Compose é uma ferramenta para definir e executar aplicativos Docker de vários contêineres. 
+      Com o Compose, você usa um arquivo YAML para configurar os serviços do seu aplicativo.
+      Então, com um único comando, você cria e inicia todos os serviços de sua configuração."
+
+    Própria conclusão {
+
+      o arquivo docker-compose é uma forma de gerar todas as configuraçõe necessárias para seu aplicativo,
+      podemos registrar todas as imagens necessárias, mapeamento de rede, deixar tudo pronto para que só no final
+      apenas rodamos no terminal docker-compose up -d 
+
+      Com isso o docker vai gerar um container com base no arquivo com todas as imagens e todas as configurações
+      e com isso já terá todo seu ambiente configurado (isso se o docker-compose estiver configurado de forma correta).
+    }
+
+    Observações {
+      Quando estamos trabalhando com o docker-compose, geralmente configuramos mais de uma imagem e com isso,
+      podemos ter dependencias e isso pode ser um problema no qual temos que lidar.
+
+      Exemplificando em um exemplo real {
+
+        Em um arquivo docker-compose estou lidando com uma imagem de um container de Asp.Net e uma imagem de container de MySQL
+        porém para eu instanciar o meu Asp.Net o meu banco MySQL já deve estar instanciado, e isso muitas vezes não acontece
+        pois o MySQL demora um pouco mais a ser instanciado, caso eu queria rodar uma migrate em tempo de criação dos containers
+        eu teria um erro pois o banco não está pronto.
+
+        Isso  é um exemplo de dependencia onde o Asp.Net dependende do banco MySQL estar pronto com as migraçõe já rodadas.
+        Para lidar com isso o docker libera uma forma de checarmos a "vida" das outras imagens através de dependencia.
+        Em tese diante desse cenario, nos parametros de configuração da imagem do Asp.Net, eu iria informar que ela
+        depdende da imagem de MySQL e esse container só pode subir após o container de MySQL já estiver pronto e com as migrations.
+
+        Essas depdendencias, na verdade só colocam em ordem a criação dos containers.
+
+        Caso queiramos validar se de fato o serviço do container no qual dependemos (nesse cenario o MySQL) está ativo
+        podemos usar uma lib de docker externa -> dockerize {
+          Lib que libera uma forma de se conectar a um serviço (imagem), e caso consiga conexão significa que  o container subiu,
+          caso não consiga significa que deve esperar mais um pouco.
+        }
+
+
+      }
+    }
+}

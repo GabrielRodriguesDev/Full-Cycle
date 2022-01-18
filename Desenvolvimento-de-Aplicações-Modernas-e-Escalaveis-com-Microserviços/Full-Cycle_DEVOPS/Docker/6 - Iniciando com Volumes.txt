@@ -1,0 +1,29 @@
+Iniciando com Volumes {
+    Volumes {
+        Volumes são o mecanismo preferido para persistir dados gerados e usados ​​por contêiners Docker. 
+        Embora as montagens de ligação dependam da estrutura do diretório e do sistema operacional da máquina host,
+        os volumes são totalmente gerenciados pelo Docker.
+
+        Exemplo {
+            Em um cenário onde tem um container docker rodando o MySQL caso eu perca essec container em execução
+            todos os arquivos (dados) que possuo nesse container serão perdidos. Por isso utilizamos os volumes para 
+            realizar um mapeamento sobre para a persistencia de dados em um HD ou qualquer outro tipo de storage.
+        }
+    }
+    
+    Sequencia de comandos {
+        1 -> docker run -d --name my_nginx -p 8080:80 -v ${pwd}:/usr/share/nginx/html  nginx {
+            Criando um novo container usando a imagem do nginx e fazendo o mapeamendo da porta do container 80
+            para  minha porta 8080, usando pela primeira vez o parametro -v que se refere ao conceito de volume,
+            usando esse parametro precisamos informar o caminho aonde os dados vão ser persistidos
+        }
+
+        2 -> docker ps {
+            Para verificar se meu container estava rodando.
+        }
+
+        3 -> docker exec -it my_nginx bash {
+            Entrando no modo exec para que possamos interagir com o container
+        }
+    }
+}

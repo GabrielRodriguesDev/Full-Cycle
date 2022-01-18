@@ -1,0 +1,53 @@
+Docker commit  {
+    Sequencia de comandos {
+        1 - docker ps -a -q {
+            Lista os hashs todos os containers parados.
+        }
+
+        2 - docker rm $(docker ps -a -q) -f {
+            Estou removendo todos os containers e estou passando uma subconsulta com a lista de todos os 
+            hashs dos conteiners parados, portanto estarei removendo todos os containers parados, sempre importanta
+            aplicar o -f para forçar a remoção e não esquecer de nenhum.
+        }
+        3 - docker run -d --name=nginx -p 8080:80 nginx {
+            Criando um novo container a partir da imagem do nginx
+            o nome do container é nginx e estamos realizando um mapeamento de porta
+            onde o 80 do meu container vai ser reproduzida na minha 8080
+        }
+        4 - docker exec -it nginx bash {
+            Entrando no modo exec no container nginx para realizar alterações de entrada e saida (-it)
+        }
+        5 - cd usr/share/nginx/html/ {
+            Acessando a pasta html no nginx
+        }
+        6.1 - apt-get update { Atualizando as dependencias } 6.2 apt-get install vim { Instalando o vim para manipular
+        o arquivo html através do terminal 
+        }
+
+        7 - vim index.html {
+            Acessando o index.html através do vim para realizar as edições.
+            (Após realizar as modificações digite :wq para salvar as edições)
+        }
+        8 - exit  {
+            Isso irá sair do modo exec
+        }
+
+        9 - docker ps {
+            Para que possamos visualizar o container e recuperar o hash dele (id)
+        }
+
+        10 - docker commit 623bdc81c8fe gabrielsilvarodrigues/nginx-commit {
+            Criando uma imagem a partir desse meu container no qual eu realizei as alterações no arquvio html
+            o nome da imagem é gabrielsilvarodrigues/nginx-coomit, e ficará disponveil para que eu possa usar em futuros containers
+        }
+
+        11 - docker run -d --name=imagempropria -p 8081:80 gabrielsilvarodrigues/nginx-commit {
+            Criando um container com base na imagem que nós mesmos criamos.
+            Isso permite que possamos alterar o container da forma que quisermos e gerarmos uma imagem
+            a partir desse container como uma especie de copia (foto) de tudo oq já alteramos
+        }
+
+
+
+    }
+}

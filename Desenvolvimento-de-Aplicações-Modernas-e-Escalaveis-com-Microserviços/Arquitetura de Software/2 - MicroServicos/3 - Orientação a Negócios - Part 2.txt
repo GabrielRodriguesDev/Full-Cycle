@@ -1,0 +1,43 @@
+Microservicex - Martin Fowler {
+    Smart endpoints & dumb pipes {
+        - Exposição de APIs (ex:Rest)
+        - Comunição entre Serviços
+        - Comunição síncrona ou assincrona
+        - Utilização de sistema de mensageria (ex: RabbitMQ)
+    }
+    Governanças desentralizada {
+        "Cada serviço é um produto diferete portanto cada serviço possui suas regras, suas tecnologias sua documentação."
+        - Ferramenta certa para o trabalho certo. Tecnologias podem ser definidas  baseadas  na necessidade  do produto.
+        - Diferentes padrões entre squad
+        - Contratos de interface de forma independente
+    }
+    Automação de infraestrutura {
+        "Com o uso do microserviços todo o processo de teste, building, deploy tem que ser rapido e eficiente, garantindo uma maior entrega e menor taxa de erro".
+        - Cloud Computing
+        - Testes automatizados
+        - Continous delivery
+        - Continous integration
+        - Load Balancer / Autoscaling
+    }
+    Desenhado para falhar {
+        "Ao projetar um serviço, temos que desenha-lo pensando nas possiveis falhas que podem ocorrer pois esse microserviço pode ter dependencias,
+        então temos que ter um segundo plano nesses casos para que não gere um colapso total."
+        - Tolarância a falhas
+        - Serviços que se comunicam precisam de fallback
+        - Logging
+        - Monitoramento em tempo real
+        - Alarmes
+    }
+    Desing evolutivo {
+        - Produto bem definidos  podem evoluir  ou serem extintos  por razões de negócios {
+            Caso um cliente desista de um recurso ou solicite melhorias, não pode ter nenhum impendimento téncnico que inviabilize atender o cliente,
+            isso me refiro, a não mexer no serviço pois ele se comunica com outro etc....
+        }
+        - Gerenciamento de versões {
+            Sistema de verões de API's por exemplo para que possamos alterar ou melhorar o produto sem atrapalhar que depende dele para algo
+        }
+        - Replace and upgradebility {
+            Ter a opção de substituir ou melhorar um produto sem que os "clientes" (quem depende desse produto) perceba.
+        }
+    }
+}

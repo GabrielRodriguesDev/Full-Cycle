@@ -1,0 +1,52 @@
+Dependency Inversion Principle { 
+    - Depender de abstrações e não implementações de classes (Objeto)
+    - Inverter as dependências
+
+    "Quando estamos criando uma implementação de uma classe (Objeto da classe) de forma manual
+    objeto = new Objeto().... Estamos ferindo esse principio, pois estamos gerando um alto acoplamento,
+    pois estamos dependendo de um tipo de Objeto (O tipo do objeto que foi implementado).
+
+    Como solução para esse problema temos que depender de abstrações (Interfaces) para que possamos depender dela
+    assim podemos implementar qualquer classe que implemente essa interface, assim o sistema não fica totalmente acoplado.
+
+    Sem contar que dessa forma invertemos a dependencia pois eu não dependo mais de um Objeto e sim de uma abstração
+    e as classes que serão implementadas que precisam estar a interface.
+
+    Isso facilita no processo de organização e manutenção, pois podemos simplesmente alterar a classe que implenta a interface
+    ao invés de ir caçando no sistema qual lugar que estão intanciando um objeto daquela classe que vai deixar de existir.
+    
+    "Geramos a dependencia quando vou instanciar meu objeto (construtor ou setter), eu não instancio
+     o objeto dentro da minha classe, não forço minha classe a depender de uma classe concreta."
+
+
+
+     Exemplo {
+         Interface Category {
+
+         }
+
+         Class DramaCategory implements Category { 
+             //Implementando a interface criada
+         }
+
+         Class xCategory implements Category  {
+            //Um novo tipo de categoria que também implementa a interface Category
+         }
+
+         Class Movie {
+             public function __construct(name, Category category){
+                 this.name = name;
+                 this.category = category
+                 /* Aqui estamos dependendo da abstração (Interface), então no momento da criação da classe
+                 que geramos a dependencia concreta, pois ele pode receber qualquer objeto que implemente a interface
+                 então no momento da criação do Objeto Movie, recebemos um objeto de um tipo de categoria que
+                  implementa a interface Category. 
+                  Fazendo isso minimizamos o acoplamento a classe Movie não depende de nenhum objeto concreto, então
+                  posso usar qual eu quiser, ajudando na organização e na manutenção pois
+                  a classe Movie não é "amarrada" com ninguém.
+             }
+         }
+     }
+
+     Obs -> Conceito de injeção de dependencia.
+} 

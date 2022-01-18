@@ -1,0 +1,29 @@
+Comandos visto nessa aula 
+{ 
+     - docker run {imagem}  {
+        Iniciar um container com base em uma imagem
+    }
+
+     - docker image {
+         Lista as imagens instaladas
+     }
+
+
+     - docker ps {
+        Lista todos os containers que estão rodando no momento
+    }
+
+     - docker ps -a {
+        Mostra todos os containers que foram rodados ou os que estão parados (containers que já rodaram e finalizaram sua execução porém ainda não foram finalizados).
+    }
+
+     - docker rm {
+         Remove os containers (parados)
+    }
+
+    Observações {
+        Cada comando tem seu parametros como o docker ps -a, portanto temos que consultar a documentação para verificar as possivels parametrizações de um comando.
+    }
+
+     
+}

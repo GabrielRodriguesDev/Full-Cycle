@@ -1,0 +1,20 @@
+{
+    "Title": "Introdução Docker",
+    "Containers": [
+        {
+            "Oque são Containers": {
+                "Conceito": "Um container é um padrão de unidade de software que empacota o código e todas as dependencias de uma aplicação fazendo com que a mesma seja execuada rapidamente de forma confiável de um ambiente computacional para o outro."
+            },
+            "Como funcionam os Conariners - Pilares": {
+                "Namespaces": "Isola os processos. É um processo com sub-processos dele rodando, emulando um sistema operacional.",
+                "Cgroups": "Controla os recursos computacionais dos containers. Isola os recursos computacionais dos procesos garantindo que não gere concorrencia entre processo",
+                "File System": "OFS (Overlay File System). Trabalhar com camadas, assim conseguimos replicar apenas um processo. Não preciso copiar o sistema operacional inteiro."
+            },
+            "Imagens": {
+                "Conceito": "Uma imagem é um conjunto de dependencias (camadas) encadeadas (estrutura de arvore) que visa fornecer todas as dependecias necessárias para o uso.",
+                "Dockerfile": "É um arquivo declarativo que usamos para construir imagens,",
+                "Funcionamento": "Ao subir as imagens de um container elas são imutavéis, porém a arquitetura de um container é feita sobre camada, então o docker libera uma camada fora que permite a leitura e escrita sobre as imagens em tempo de execução, porém não altera o dockerfilem, portanto quando essa imagem morrer, as mudanças serão perdidas."
+            }
+        }
+    ]
+}

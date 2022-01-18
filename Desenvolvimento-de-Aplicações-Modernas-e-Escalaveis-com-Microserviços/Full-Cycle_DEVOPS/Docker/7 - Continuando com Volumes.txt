@@ -1,0 +1,38 @@
+Continuando com Volumes {
+    Sequencia de comandos {
+        1 - docker volume ls {
+            Mostra os drivers (tipos de volumes) que pode ser local remoto... etc, e o nome do volume
+        }
+
+        2 - docker volume create vol_test {
+            Criando um volume local com o nome de vol_test
+        }
+
+        3 - docker volume ls {
+            Rodamos o docker volume ls, e conseguimos ver nosso novo volume em execução
+        }
+
+        4 - docker volume inspect vol_test {
+            Inspecionando o volume criado, tendo mais informações sobre ele
+        }
+
+        5 - docker volume create --driver local --opt type=none --opt device=${pwd} --opt o=bind volume_local  {
+            Criando um volume local com o mapeamento da pasta para a minha pasta atual (device=${pwd}) gerando o bind.
+            Nome do volume é volume_local 
+        }
+        
+        6 - docker volume inspect volume_local {
+            Conseguimos ver mais detalhes sobre o nosso volume criado
+        }
+
+        7 - docker run -d --name my_nginx -p 8080:80 -v volume_local:/usr/share/nginx/html nginx {
+            Criando um container e atribuindo o volume (volume_local) ao container, com isso temos os arquivos da pasta
+            /usr/share/nginx/html do container sendo persistidos no nosso host (local)
+        }
+
+        8 - docker volume prune {
+            Apaga todos os volumes sem uso, os volumes já vinculados a algum container não serão removidos,
+            é necessário remover a dependencia primeiro.
+        }
+    }
+}

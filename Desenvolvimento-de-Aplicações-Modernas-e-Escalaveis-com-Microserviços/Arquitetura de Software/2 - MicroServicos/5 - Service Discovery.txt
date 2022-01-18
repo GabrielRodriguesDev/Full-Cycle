@@ -1,0 +1,13 @@
+Microserviços {
+    Service Discovery {
+       "Processo de service Discovery e responsável por prover mecanismos de identicação dos serviços disponvéis e suas instâncias"
+
+
+       Ferramentas populares {
+            - Netflix Eureka
+            - Consul
+            - Etcd
+            - ZooKeeper
+       }
+    }
+}

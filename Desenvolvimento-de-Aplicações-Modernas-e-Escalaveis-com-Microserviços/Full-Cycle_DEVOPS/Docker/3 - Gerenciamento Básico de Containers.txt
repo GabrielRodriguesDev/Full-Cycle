@@ -1,0 +1,32 @@
+Gerenciamento Básico De Containers {
+    Sequencia de comandos executados {
+        1  -> docker run nginx:latest {
+            Iniciando um container docker em paralelo já baixando a image do nginx com a tag "latest"
+            que significa que estamos baixando a ultima versão do nginx (Tag é variavel consulte o Docker hub para saber qual usar, depende da imagem que está baixando)
+        }
+
+        2 -> docker run -d nginx {
+            Criando um container agora a partir da imagem já instalada em background (-d)
+        }
+
+        3 -> docker ps {
+            Lista todos os containers que estão rodando no atual momento
+        }
+
+        4 -> docker stop {idContainer} {
+            Para o container que está em processo (com base no id passado)
+        } 
+
+        5 -> docker ps {
+            Lista todos os containers que tenho parado
+        }
+
+        6 - docker start {id} {
+            Sobe um container parado com base no id passado
+        }
+
+        7 - docker rm {id} -f {
+            Forçando a exclusão de um container que está em execução. (Excluindo sem antes para-lo).
+        }
+    }
+}

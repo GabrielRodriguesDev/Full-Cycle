@@ -1,0 +1,29 @@
+Distribuição de responsabilidades {
+
+    A distribuição de responsabilidade está muito ligado a questão de organização do projeto sistemico,
+    como num todo. A sua aplicação só deve ter responsabilidades que compete a ela, portanto assets (imagens e documentos adicionais)
+    não devem estar juntamente com o servidor da aplicação, devem estar em um servidor de assets, mesma coisa para o Cache e BD, então tudo que não estiver ligado
+    a aplicação, deve estar em servidores separados.
+
+    É possivel trabalhar com escala horizontal com aplicações monóliticas, se usarmos a distribuição de responsabilidade de forma correta,
+    pois poderemos subir diversas instancias da aplicação em varios servidores, e eles acessaram o mesmo servidor de BD o mesmo servidor de assets e de Cache
+    e assim por diante, então se a distribuição for bem feita é possivel fazer uma escala diferenciada com sistema monoliticos;
+
+    Quando aplicações monóliticas podem parar de valer a penas? {
+        - Times Grandes {
+            Em times grandes o gerenciamento de um projeto monolitico se torna complicado pois oque uma pessoa da equipe pode estar mexendo, 
+            a outra pode estar quebrando, gerando muitos conflitos no gerenciamento de versão, e desencadiando um tempo perdido para arruma-los.
+        }
+         - Necessidade de escalar todo o sistema pelo fato de uma àrea em especifico esteja com pico de utilização {
+             Muitos casos a escala vertical ou horizontal de todo o sistema se dá apenas pelo alto uso de um unico recurso, 
+             então nesse caso seria mais viavel desvicular esse recurso do projeto como num todo para deixa-lo em um servidor separado,
+             aonde terá mais espaço para trabalhar e mais memoria para utilizar
+         }
+         - Risco de um deploy completo começa  a se levar {
+             Uma mudança de um pequeno recurso ("baixa prioridade") pode comprometer o sistema inteiro, portanto cada deploy tem que ser minuciosamente conferido.
+         }
+         - Necessidade de utilizar tecnologias diferentes {
+             Usar tecnoligias diferentes para resolver um necessidade, com o Monolito não é muito viavel usar mais de uma tecnologia no projeto. 
+         }
+    }
+}

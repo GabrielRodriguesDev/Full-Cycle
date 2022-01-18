@@ -1,0 +1,21 @@
+Executando comandos {
+
+    
+    1 -> docker run --name my_nginx -d -p 80:80 nginx {
+        Criando um novo contairner a partir da image do ngnix mapeand a porta 80 (minha máquina) para a 80 do container.
+    }
+
+    2 - docker exec my_nginx uname -a {
+        O "docker exec" permite a execução de comandos em um container (em execução) 
+        my_nginx representa o container que está usando, já os parametros uname -a é um comando linux que
+        retona o nome ea versão do kernel atual, nesse caso do container.
+    }
+
+    3 - docker exec -i -t my_nginx bash {
+        docker exec -it ou -i -t {nome do container} bash, permite a interacão com o container de forma de
+        input e output.
+
+        A partir desse comando entramos em modo root em nosso contatiner (linux) aonde podemos transitar
+        pela estrutura de pastas e fazer as alteraçõe sobre os arquivos que deseja.
+    }
+}

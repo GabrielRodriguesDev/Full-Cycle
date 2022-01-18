@@ -1,0 +1,52 @@
+Trabalhando com releases {
+    Sequencia de comandos {
+        - git flow release start 0.2.0 //Iniciando uma nova branch de release
+
+        - git push origin release/0.2.0 //Subindo branch para o github
+
+        - No github crio um pull request para a master (Apenas os release vão para a master, o restante deve ir para develop)
+
+        - Confirmo o merge de pull request
+
+        - Deleto a branch no github
+
+        - Após deletar a branch e tentar realizar o gitflow finish na minha máquina tive problemas,
+            depois de resolver os problemas consegui realizar o finish
+        
+        - git flow release finish '0.2.0' //Mergiando com develop e criando tags
+
+        - git push origin develop --tags //Subindo a branch atualizada e flegando as tags que só tinha em minha máquina.
+
+        - Podemos também trabalhar com release da seguinte forma {
+
+            1 - Após a feature subir para a develop, podemos criar uma nova release com o comando:
+                - git flow release start '0.2.1'
+
+            2 - Após criar minha nova release com base em develop, essa nova branch só existe
+            na minha máquina, para que ela suba para o git hub precisamos realizar um push
+                - git push origin release/0.2.1
+
+            3 -  Após subir a branch para o git hub, automaticamente o git hub vai sugerir o pull request,
+            geramos o pull request para a master.
+
+            4 - Após ele ser aceito podemos deletar a branch no github (o github automaticamente vai
+            dar essa opção após realizar o merge do pull request)
+
+            5 - Como a branch foi removida remotamente (github) precisamos remove-la  localmente também
+                - git branch -d release/0.2.1
+
+            7 - Feito isso, agora temos que atualizar nossa branch master local, pois ela contém novas informações
+            que foram adicionadas no pull request da release
+                - git checkout master
+                - git pull origin master
+            
+            8 - Como realizamos um pull request e não criamos o git flow finish, deletamos a branch, nossa release subiu sem a tag,
+            é sempre aconselhavél que a nossa master possua as tags, então com ela atualizada vamos gerar as tags.
+                - git tag 0.2.1
+
+            9 - Com a tag criada sobre a nossa branch master, 
+            podemos realizar um push para atulizar a master com essa nova tag que criamos
+                - git push origin master --tags
+        }
+    }
+}
