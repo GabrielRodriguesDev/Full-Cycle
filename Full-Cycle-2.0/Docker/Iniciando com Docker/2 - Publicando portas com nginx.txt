@@ -1,0 +1,44 @@
+Publicando portas com nginx {
+        Sequencia de comandos {
+            -> docker run nginx {`
+                Executando um container com base na imagem do nginx (como não passamos a versão
+                será baixado a lastest por padrão).
+            }
+            -> docker ps {
+                Exibindo os containers em execução.
+
+                    Ao observar os containers em execução notamos que o nosso container que acabos de baixar
+                    possui uma porta exposta (Podemos ver isso na coluna PORTS onde consta a informação 
+                    80/tcp) isso acontece pois nossa imagem é um web server (nginx) portanto ele libera uma
+                    porta para a conexão de forma local.
+
+                    Se tentarmos acessar pelo navegador da máquina a porta 80 (localhost:80), nada é mostrado
+                    como nada é exibido sendo que meu nginx está sendo executado e a porta 80 está liberada
+                    para uso dele?
+
+                    Esse caso apresenta um cenário perfeito para exeplificar algumas questões.
+                    Uma coisa é a nossa máquina local, outra coisa é o container. Portanto eu não
+                    vou conseguir da minha máquina acessar o nginx, pois ele está sendo executado no
+                    container e a porta do container que está liberada para uso dele. "Nosso host (nossa
+                    máquina) não está na rede do docker".
+            }
+
+            -> docker run -d -p 8080:80 nginx {
+                Executando um container em segundo plano (permitindo usar o terminal ainda) com a imagem do nginx, passando o 
+                parametro -p (publicar porta)
+                
+                -p {
+                    -p é um parametro do docker run que publica uma porta TCP do nosso host (nossa máquina ou a máquina que 
+                    está executando o cli).
+
+                    Observe que no caso de uso de exemplo que estamos realizando (docker run -d -p 8080:80 nginx) as portas estão
+                     vinculadas ao host (8080:80) isso significa que vou poder acessar a porta 80 do meu container através da minha
+                     porta local 8080.
+
+                     Nota-se que não estamos expondo a porta 80 do nosso container, pois a imagem do nginx por padrão já expõem a porta
+                     80.
+
+                }
+            }
+    }
+}

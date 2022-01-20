@@ -1,0 +1,25 @@
+Executando Ubuntu  {
+    Sequencia de comandos {
+        -> docker run -it Ubuntu bash {
+            Executando um container (docker run) utilizando a imagem do ubuntu (não tem versão então
+            puxa a lastest como default) e executando um comando "bash" (vai executar o bash).
+
+            -it = -i -t 
+                -i {
+                    Modo interativo, possibilitanto interagir com máquina,nesse exemplo permitindo
+                    interarir com o terminal.
+                }
+                -t {
+                    tty -> permite digitar e rodar comandos. Nesse cenário permite executar comandos
+                    no bash do ubuntu
+                }
+        }
+    }
+
+    Nesse cenário que montamos acima, criamos um container de uma imagem de um SO de Ubuntu executando o bash e possibilitando
+     a interação com o mesmo. Porém o que mantinha esse container em execução era justamente o uso do bash, portanto se eu der
+     um exit do bash o meu container vai "morrer" (a imagem vai continuar salva para poder subir outro container).
+
+    Com isso em mente conseguimos concluir que caso processo que compõem o container seja encerrado (processo principal) o nosso
+     container irá cair.
+}
