@@ -1,0 +1,30 @@
+Removendo o containers {
+    Sequencia de comandos {
+        -> docker stop {id do container} {
+                Parando o container em execução com base no id.
+        }
+
+        -> docker ps-a  {
+                Exibe os container parados na máquina (disponiveis para execução (start));
+        }
+
+        -> docker start {id do container} {
+                Iniciando o container que estava parado com base no id.
+        }
+
+        -> docker rm {id do container} {
+                Realizaa e exclusão de um container que não está em execução
+                com base no id do container.
+        }
+
+        -> docker rm {nome do container} {
+                Realiza a exclusão de um container que não está em execução com base
+                no nome do container.
+        }
+
+        -> docker rm {id ou nome} -f {
+                Realizando a exclusão de um container em execução utilizando o -f (força a exclusão
+                permitindo excluir um container em execução).
+        }
+    }
+}

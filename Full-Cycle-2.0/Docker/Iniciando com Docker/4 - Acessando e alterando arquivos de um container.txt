@@ -1,0 +1,65 @@
+Acessando arquivos de um container {
+    Sequencia de comandos {
+        -> docker run --name -d -p 8080:80 nginx nginx {
+                Executando um container em segundo plano com base na imagem do nginx, nomeando 
+                o container (--name) de nginx e mapeando a porta (-p 8080:80) 8080 do meu host
+                para se comunicar com a porta 80 do container.
+        }
+
+        -> docker exec {
+                Executa um comando no nosso container
+        }
+
+        -> docker exec nginx ls {
+                Executando o comando ls (mostrar os diretórios) no meu container nginx (isso é possivel
+                devido ao comando docker exec que permite execurtar comandos no container).
+        }
+
+        -> docker exec -it nginx bash {
+            Executando comandos no container nginx que está em execução.
+            
+            Executando o comando no container para abrir o bash, e passando o parametro
+            -it que permite interagir com container (-i) e também digitar e rodar comandos (-t)
+
+            Nota-se que se tivessemos subido esse container sem o -it o container ia iniciar
+            executar o bash e fechar. O -it gera a interatividade com o container portanto ele
+            não fecha o bash pois está configurado a receber interações nele, mas caso o bash seja
+            fechado (executando exit no bash) o container vai ser encerrado.
+        }
+
+        -> cd usr/share/nginx/html/ {
+                Após entrar no bash do meu container através docker exec e liberando a interatividade 
+                para digitar através do parametro -it.
+
+                Estamos acessando um diretório em especifico (pelo bash do container) para alterar um
+                arquivo do nginx que está instalado nesse container.
+        }
+
+        -> apt-get update {
+                Atualizando dependencias do container
+        }
+
+        -> apt-get install vim {
+                Instalando o vim no container, para poder editar arquivos pelo terminal
+        }
+
+        -> vim index.html {
+                Estando no diretório que contém o arquivo index.html (após instalar o vim)
+                rodamos o vim index.html, com isso abrimos o arquivo index.html para edição através do vim
+                
+                (Para entrar no modo edição no vim é a letra  "i" - para sair do modo edição "especifico
+                 para salvar algo aperte "shift + ":" + "w" - para sair do vim ":q" - sair sem salvar ":q!"
+                 sair salvando) ":qw"
+                        }
+    }
+    Considerações {
+        - O docker exec permite executarmos comandos em nossos container em executação.
+
+        - Nossa imagem é imutavel qualquer alteração que realizamos em um container em execução
+            só fica persistida em momento de execução, quando esse container for parado e inciado
+            novamente ele não terá as mudanças que realizamos. "alterações no container não alteram
+            a imamgem".
+
+        - 
+    }
+}

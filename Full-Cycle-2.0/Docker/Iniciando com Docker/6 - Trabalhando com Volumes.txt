@@ -1,0 +1,51 @@
+Volumes {
+    Os volumes são o mecanismo preferencial para a persistência de dados gerados e usados 
+    por contêineres do Docker.
+
+    Sequencia de comandos {
+        
+        -> docker volume create meuvolume {
+            Criando um volume com o nome 'meuvolume'
+        }
+
+        -> docker volume ls {
+            listando os volumes, e nessa listagem podemos ver duas "colunas"
+
+            DRIVER      VOLUME NAME
+
+            O Driver significa qual é o local que está armazenado remoto ou local 
+            (nesse nosso exemplo está local). Volume name se refere ao nome do volume
+        }
+
+        -> docker volume inspect meuvolume {
+            Inspeciona o volume, exibindo informações sobre o mesmo {
+                CreateAt => Data de criação do volume
+                Driver => Driver do volume
+                Labels =>
+                Mountpoint => Local onde fica salvo os arquivos no host (Fácil de fazer backup)
+                Name => "meuvolume
+                Options => 
+                Scope => Escopo de onde está sendo salvo.
+            }
+        }
+
+        -> docker run --name nginx -d --mount type=volume,source=meuvolume,target=/app nginx {
+            Criando um container mapeando o volume usando o parametro mount, passando que o type
+            é volume e o source é o nome do volume que criamos.
+
+            Criando um container em segundo plano com o nome nginx a partir da imagem do nginx,
+            mapeando o volume meuvolume para a pasta /app
+        }
+
+        - Fazendo isso nosso container tem acesso ao determinado volume, e toda mudança realizada na pasta
+        app será salva no volume, caso venhamos a criar mais containers usando o mesmo volume, eles terão
+        já todas as edições que foram realizadas nos arquivos do volume.
+
+
+        -> docker volume prune {
+            limpa os volumes
+        }
+    }
+
+
+}

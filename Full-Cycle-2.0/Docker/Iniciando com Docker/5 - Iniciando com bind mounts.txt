@@ -1,0 +1,44 @@
+Bind mounts {
+    Cria um volume usando o host (máquina local) como "Source" do container. Caso o container venha
+    a morrer o arquivo vai estar presente no diretório do host que foi mapeado.
+
+    Sequencia de comandos {
+        -> docker run -d --name nginx -p 8080:80 -v ${PWD}:/usr/share/nginx/html nginx {
+            Executando o container em segundo plano (-d) com o nome de nginx (--name)
+            mapeando a porta 80 do container para a porta 8080 do nosso host (-p)
+            criando um volume do tipo bind mount fazendo a ligação do diretório do nosso host
+            (${PWD}) para um diretório do nosso container (usr/share/nginx/html).
+
+            Com isso feito ele vai criar um container do nginx ligando um diretório do container
+            a uma pasta do nosso host. Nesse exemplo, estamos mapeando a pasta do nosso container
+            que possui o arquivo de html que é exibido quando acessamos o nginx (index.html).
+            Como realizamos o bind esse arquivo não foi criado, pois ele deve ser criado na nossa pasta
+            então vou fazer a criação de um index.html basico, com um html simples e apenas um <h1>
+            para teste.
+
+            Ao realizar isso e dar um f5 (com o container rodando) o nosso index.html que criamos no 
+            nosso host vai ser exibido.
+            
+        }
+
+        - Realizando o bind mount, caso nosso container venha a ser parado ou até mesmo excluido, o arquivo
+           index.html que está presente em nosso host não será apagado, e caso eu queira criar um novo container
+           com o mesmo mapeamento ele já exibira esse nosso arquivo html
+
+        - docker run -v é o comando antigo do docker, hoje em dia existe uma forma mais nova de  
+           realizar o bind mount {
+               docker run -d --name nginx -p 8080:80 --mount type=bind,source="${pwd}"/Volumes/"Bind mounts",target=/usr/share/nginx/html nginx  {
+                   Esse é comando faz o mesmo porém ele é mais explito, onde podemos ver os parametros de fato.
+               }   
+           }
+
+        - Difereça entre o parametro -v e --mount {
+            A principal diferença entre o -v e o --mount é que usando a o paramtro -v
+            e passarmos um source de uma pasta que não exista ele cria uma pasta.
+            Já com o --mount ele não cria a pasta e retorna um erro.
+        }
+
+
+
+    }
+}
