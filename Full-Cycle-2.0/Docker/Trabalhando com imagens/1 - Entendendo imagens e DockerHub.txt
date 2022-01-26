@@ -1,0 +1,9 @@
+Imagens e DockerHub {
+    Images Docker são compostas por sistemas de arquivos de camadas que ficam uma sobre as outras.
+    Ela é a nossa base para construção de uma aplicação, ela pode ser desde o base do CentOS como
+    também um CentOS com Apache, PHP e MySQL.
+
+    Essas imagens podem ser baixadas de uma entidade compartilhada como "DockerHub" ou
+    podemos baixar de nosso hub privado (Amazon, Digital Ocean), pois podemos criar nossas imagens
+    subir nesses serviços e só pessoas autenticadas podem acessar essas imagens.
+}
