@@ -1,0 +1,15 @@
+Publicando imagens no Docker Hub {
+    ** Para publicar uma imagem no docker hub usamos o ID do user 
+    (no caso do docker hub) no meu caso é o gabrielrodriguesdev, por isso
+    uso ela para realizar o push. Se não informarmos o id do user de forma correta
+    não vai conseguir subir a imagem.
+
+    Sequencia de comandos {
+        -> docker login {
+            logando no docker
+        }
+        -> docker push gabrielrodriguesdev/nginx-gabrielteste {
+            Subindo a imagem nginx-gabrielteste para o docker hub
+        }
+    }
+}

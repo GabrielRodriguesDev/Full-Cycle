@@ -1,0 +1,30 @@
+ENTRYPOINT vs CMD {
+    Na construção do Dockerfile, podemos configurar algo para
+     ser executado na construção do container, aqui está um exeplo
+     de um arquivo Dockerfile que contém uma imagem ubuntu
+     e executa um ECHO no terminal {
+         FROM ubuntu:latest
+         CMD ["echo", "Hello Word"]
+     }
+
+     Na execução desse container com base da imagem construida pelo dockerfile,
+     será impresso no terminal "Hello Word"
+
+     Porém nesse caso temos um problema, pois se precisarmos executar um comando 
+     na execução do container (no container com base na imagem do dockerfile), o comando
+     de execução do container vai substituir  o comando de execução do dockerfile.
+
+     Como podemos sempre garantir que um comando seja executado e não seja substituido:
+
+     Nesse caso usamos o ENTRYPOINT ao invés de usar o CMD na construção do dockerfile.
+     O ENTRYPOINT é um comando fixo que é garantido que será executado, já o CMD é um 
+     comando variavel que pode ser substituido.
+
+     FROM ubuntu:latest
+     ENTRYPOINT ["echo", "Hello"]
+     CMD ["Hello Word"]
+
+
+     Todos os comandos "CMD" serão executados pós o "ENTRYPOINT".
+
+}

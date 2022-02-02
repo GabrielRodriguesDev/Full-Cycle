@@ -1,0 +1,84 @@
+Bridge {
+    Sequencia de comandos {
+        -> docker network {
+            Lista os comandos disponiveis sobre o parametro network
+        }
+
+        -> docker network ls {
+            Lista as redes configuradas
+        }
+
+        -> docker prune {
+            Remove todas a net não usadas (mantendo só as padrões)
+        }
+
+        -> docker run -d -it --name ubuntu1 bash {
+            Executando o container em segundo plano a partir da imagem mais recente do bash (ubunto)
+        }
+
+        -> docker run -d -it --name ubuntu2 bash {
+            Executando outro container a a partir da mesma imagem
+        }
+
+        -> docker network inspect bridge {
+            Inspecionando a rede bridge e verificando que os dois containers
+            que criamos com os comandos acima, estão dentro desse rede.
+        }
+
+        -> docker attach ubuntu1 {
+            Habilitando a entrada (preparando para receber fluxo de entrada), no container
+            ubuntu1.
+            O comando attach só foi possivel pois criamos o container com o 
+            -it.
+            Com o comando attach executado será liberado o terminal do container do ubuntu1
+            para receber entradas e modificações.
+        }
+
+        -> Dentro do terminal do ubuntu1 -> ip addr show {
+            Mostrando o ip do container no qual estamos atacando 
+            IP - 172.17.0.2 (ubuntu1)
+        }
+        -> Dentro do terminal do ubuntu1 -> ping 172.17.0.3 {
+            IP - 172.17.0.3 (ubuntu2)
+
+            Ao realizar o ping, tivemos sucesso pois ambos os containers estão na mesma rede
+        }
+        -> Saindo do terminal do container ubuntu1
+
+        Criando uma rede bridge {
+            -> docker network create --driver bridge minharede {
+                Criando uma network usando como o drive o bridge e e apelidado o a rede de
+                minharede
+            }
+
+            -> docker run -dit --name ubuntu1 --network minharede bash && docker run -dit --name ubuntu2 --network minharede bash {
+                Executando o container em segundo plano com base na imagem do bash,
+                e configurando os componentes externos.
+            }
+        }
+    }
+
+    Considerações {
+        1 - A princpio a rede default do docker são possui resolução de nome dos ips dos
+        cotainers nessa rede.
+        
+        2 - Caso venhamos a executar containers usando uma rede própria (que eu mesmo criei)
+        automaticamente já vem habilitada a resolução de nome
+
+        3 - Os containers na rede do tipo bridge podem se comunicar com outros containers da
+        mesma rede. Portanto se criamos duas redes bridge e tentarmos comunicar os containers,
+        um com outro teriamos erro, pois não são da mesma rede, são apenas do mesmo motivo.
+
+        4 - Para conectar um container que está na rede A para a rede B para que ele possa
+        ter acesso aos container da rede B, existe o comando connect que realiza esse processo. {
+            -> docker network connect minharede ubuntu3 {
+                Conectando o container ubuntu3 na network minharede, com isso a ubuntu3
+                consegue pingar os containers da rede do ubuntu2
+            }
+        }
+
+
+    }
+
+
+}

@@ -1,0 +1,26 @@
+Networks {
+
+    Tipos de rede {
+        bridge {
+            Rede padrão dos containers.
+            Todos os containers que estão podem se comunicar via TCP/IP, ou seja, caso você
+            saiba qual o endereço IP do container que desejar conectar é possivel enviar um
+            trafego para ele, pois todos estão na mesma rede IP.
+        }
+        none {
+            Essa rede tem como objetivo isolar o container para comunicações externas, ou seja,
+            ela não receberá nenhuma interface para comunicação externa. A sua única interface
+            de rede IP será a localhost.
+            Essa rede normalmente é utilizada para containers que manipulam apenas arquivos, sem
+            a necessidade de enviá-los via rede para outro local. (Ex. container de backup que
+            utiliza os volumes de container de banco de dados para realizar o dump, que será 
+            usado no processo de retenção dos dados).
+        }
+        host {
+            Essa rede tem como objetivo entregar para o container todas as interfaces existentes
+            no docker host. De certa forma, pode agilizar a entrega dos pacotes, uma vez que não
+            há bridge no caminho das mensagens. Mas normalmente esse overhead é mínimo e o uso de
+            uma brigde pode ser importante para segurança e gerencia do seu tráfego.
+        }
+    }
+}

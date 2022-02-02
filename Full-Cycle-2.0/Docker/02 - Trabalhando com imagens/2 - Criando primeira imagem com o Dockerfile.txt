@@ -1,5 +1,5 @@
 Dockerfile {
-    "A Dockerfileé um documento de texto que contém todos os comandos que um usuário pode chamar
+    "A Dockerfile é um documento de texto que contém todos os comandos que um usuário pode chamar
      na linha de comando para montar uma imagem. O uso docker build de usuários pode criar uma
      compilação automatizada que executa várias instruções de linha de comando em sucessão."
 
@@ -7,7 +7,7 @@ Dockerfile {
       o build do DockerFile a fins de construir a nossa imagem, vamos executar:
 
       -> docker build -t gabrielrodriguesdev/nginx-com-vim:latest . {
-        docker build (relaiza o build sobre o DockerFile a fim de criar a imagem)
+        docker build (realiza o build sobre o DockerFile a fim de criar a imagem)
         -t gabrielrodriguesdev/nginx-com-vim:latest . (-t parametro de nomeação de tag) {
           Onde  gabrielrodriguesdev/nginx-com-vim é o nome e o latest é a tag
         }
