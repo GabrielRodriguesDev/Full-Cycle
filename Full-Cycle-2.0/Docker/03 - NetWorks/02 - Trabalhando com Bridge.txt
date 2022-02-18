@@ -13,7 +13,7 @@ Bridge {
         }
 
         -> docker run -d -it --name ubuntu1 bash {
-            Executando o container em segundo plano a partir da imagem mais recente do bash (ubunto)
+            Executando o container em segundo plano a partir da imagem mais recente do bash (ubuntu)
         }
 
         -> docker run -d -it --name ubuntu2 bash {
@@ -22,7 +22,7 @@ Bridge {
 
         -> docker network inspect bridge {
             Inspecionando a rede bridge e verificando que os dois containers
-            que criamos com os comandos acima, estão dentro desse rede.
+            que criamos com os comandos acima, estão dentro desse rede que é a padrão.
         }
 
         -> docker attach ubuntu1 {
@@ -52,14 +52,16 @@ Bridge {
             }
 
             -> docker run -dit --name ubuntu1 --network minharede bash && docker run -dit --name ubuntu2 --network minharede bash {
-                Executando o container em segundo plano com base na imagem do bash,
-                e configurando os componentes externos.
+                Executando os containers em segundo plano com base na imagem do bash,
+                e configurando em uma rede criada minharede externos, como essa rede é do tipo bridge,
+                mas é uma rede a parte apenas containers nesse rede minharede podem comunicar entre si,
+                já containers de outra rede brige não consegue.
             }
         }
     }
 
     Considerações {
-        1 - A princpio a rede default do docker são possui resolução de nome dos ips dos
+        1 - A principio a rede default do docker são possui resolução de nome dos ips dos
         cotainers nessa rede.
         
         2 - Caso venhamos a executar containers usando uma rede própria (que eu mesmo criei)
@@ -67,7 +69,8 @@ Bridge {
 
         3 - Os containers na rede do tipo bridge podem se comunicar com outros containers da
         mesma rede. Portanto se criamos duas redes bridge e tentarmos comunicar os containers,
-        um com outro teriamos erro, pois não são da mesma rede, são apenas do mesmo motivo.
+        um com outro teriamos erro, pois não são da mesma rede, são apenas do mesmo tipo de rede 
+        mas não da mesma rede.
 
         4 - Para conectar um container que está na rede A para a rede B para que ele possa
         ter acesso aos container da rede B, existe o comando connect que realiza esse processo. {

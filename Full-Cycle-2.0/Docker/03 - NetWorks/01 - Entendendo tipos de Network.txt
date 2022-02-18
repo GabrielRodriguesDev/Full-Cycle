@@ -21,6 +21,13 @@ Networks {
             no docker host. De certa forma, pode agilizar a entrega dos pacotes, uma vez que não
             há bridge no caminho das mensagens. Mas normalmente esse overhead é mínimo e o uso de
             uma brigde pode ser importante para segurança e gerencia do seu tráfego.
+
+            Em resumo o container fica casado com a rede do host, caso eu venha
+            criar um container nginx por exemplo, eu não preciso mapear a porta
+            8080:80 pois como é do tipo host ele já vai funicionar na minha porta 80 local
+            
+            **Obs** Esse tipo de rede não funciona muito bem fora do linux, problema constatado
+            com o Docker Desktop que usa uma VM linux para o Docker
         }
     }
 }

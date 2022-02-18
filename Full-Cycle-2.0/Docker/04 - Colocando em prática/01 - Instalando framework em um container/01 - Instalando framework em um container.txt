@@ -1,0 +1,50 @@
+Instalando framework em um container { 
+    
+    Nosso objetivo é gerar uma imagem docker com o framework Laravel
+    rodando dentro, para que qualquer pessoa que venha rodar essa imagem
+    consiga iniciar o framework no container.
+
+     1. Primeiro vamos executar o container e rodar todos os comandos para saber como 
+     vamos montar o nosso arquivo dockerfile, assim não precisamos ficar adivinhando no
+     dockerfile. {
+         Sequencia de comandos {
+          - docker run -it --name php  php:7.4-cli bash {
+              Criando um container no modo iterativo da imagem do php:7.4 com o nome de php, já executando em modo bash.
+          }
+          - apt-get update {
+              Atualiza alista de pacotes, atualizando os que necessitam de atualização, bem como novos pacotes que acabaram de chegar (comando linux).
+              Esse imagem php:7.4 utiliza o SO Debian
+          }
+          -- Nesse momento temos a nossa imagem php rodando, porém precisamos instalar o 
+          lavarel em algum repositório do nosso container portanto vamos criar uma pasta para armazena-lo {
+              mkdir /var/www {
+                  Criando pasta no container (Linux: Debian), caso de o retorno:
+                  "mkdir: cannot create directory '/var/www': File exists", é porque o 
+                  repositório já existe então não é preciso cria-lo.
+              }
+          }
+
+          -- Com o ambiente preparado, podemos instalar o framework, isso é feito no processo 'normal', você precisa saber instalar o framework idependente se 
+          é local ou em container.
+
+          No caso do Laravel vamos instalar ele no nosso container via gerenciador de pacote, como o npm ou nugget, só que vamos usar o gerenciador do próprio php
+          que é o composer, então antes de instalar o framework vamos instalar o 
+          gerenciado de pacote. (Segui o passo a passo do próprio site do composer {
+              
+              Link com os comandos: https://getcomposer.org/download/
+          }
+
+          -- Com o composer instalado podemos criar um projeto  Laravel em nosso container
+          via composer {
+            
+
+            - apt-get install libzip-dev -y <-- Instalando uma lib para lidar com zip (coisa unica do php)
+            - docker-php-ext-install zip <-- Instalando o a lib de zip direto no php
+            
+            - php composer.phar create-project laravel/laravel Laravel
+          }
+          
+         }
+     }
+
+}

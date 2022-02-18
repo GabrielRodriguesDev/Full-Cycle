@@ -1,0 +1,22 @@
+Criando aplicação Node.js sem o Node {
+    Objetivo dessa aula é gerar um container docker com o Node.js
+    e realizar um Olá mundo, porém vincular o meu repostiório local para que eu 
+    possa desenvolver e o código desenvolvido ser executado no node.
+    (isso para ambientes de desenvolvimento)
+
+
+    Sequencia de comandos (Entrar na pasta Node antes) {
+        docker run --rm -it -v ${PWD}/:/usr/src/app -p 3000:3000 node:15 bash {
+
+            - Executando container com base na imagem "node:15", mapeando a porta 3000 do nosso host para o container criando um volume que vincula a nossa pasta atual(pasta node) a seguinte estrutura do container: /usr/src/app, no modo interativo com o bash sendo executado
+        }
+
+        cd usr/src/app {
+            Acessando a pasta no qual tem o bind de volume com a minha pasta local
+        }
+
+        -- Com isso feito tudo que for criado na minha pasta que tem o bind com o volume vai cair no container e tudo que for criado no container vai cair na pasta do meu host, isso devido ao bind
+    }
+
+    
+}

@@ -1,0 +1,24 @@
+Host {
+    O tipo de rede host ele realiza o bind (ligamento) do container com o host,
+    para exemplificar melhor segue um exemplo:
+
+    ->  docker run --rm -d --network host --name my_nginx nginx {
+        Criando e iniciando o contêiner como um processo separado. A --rmopção significa 
+        remover o contêiner assim que ele sair/parar. O -dsinalizador significa iniciar o 
+        container desanexado (em segundo plano).
+    }
+    -> Acesse o Nginx navegando até http://localhost:80/  {
+        Note que não executei o container realizando bind de porta do container para o meu 
+        host, pois com a rede host o ligamento entre container e host deveria funcionar,
+        então eu iria conseguir conectar direto do meu host.
+    }
+
+    -> Observação {
+        O Docker foi estruturado para rodar em ambiente linux, portanto rede host o bind não
+        funciona corretamente no Docker Desktop (MacOS e Windowns) pois ambos o Docker
+        Desktop, utiliza uma VM e o bind rola com a VM não com o host.
+
+        Por fim o recurso funciona nativamente em host Linux e o no WSL que é o linux instalado
+        em uma partição.
+    }
+}

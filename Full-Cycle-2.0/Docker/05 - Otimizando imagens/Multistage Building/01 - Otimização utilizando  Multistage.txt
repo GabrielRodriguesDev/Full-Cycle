@@ -1,0 +1,7 @@
+Otimização utilizando  Multistage {
+    "As compilações de vários estágios são úteis para qualquer pessoa que tenha se esforçado para otimizar Dockerfiles, mantendo-os fáceis de ler e manter." - Docs.Docker 
+
+    - Nessa aula queremos criar um container novamente do laravel, porém usando o nginx como proxy reverso. 
+
+    - Usaremos o multistage para melhorar o desempesnho nas contrução de imagens e execução dos containers....
+}

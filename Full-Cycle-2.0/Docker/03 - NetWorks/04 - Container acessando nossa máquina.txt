@@ -1,0 +1,8 @@
+Container acessando máquina host {
+    Há casos raros porém são casos de uso, no qual o container precisa acessar o host,
+    isso é "raro" pois a maioria das redes de container são do tipo bridge.
+
+    Para o meu container consiga acessar minha máquina host, usamos o DNS
+    "host.docker.internal":"port", então o DNS é host.docker.internal no qual 
+    o docker deve realizar a resolução de nome.
+}

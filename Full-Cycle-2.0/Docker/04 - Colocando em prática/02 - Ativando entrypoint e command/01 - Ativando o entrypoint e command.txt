@@ -1,0 +1,45 @@
+Ativando o entrypoint e command {
+    Como vimos na nossa aula passada, criamos o nosso container manualmente e com isso
+    vimos qual seria os passos necessários para realizar a criação da imagem, com os passos mapeados podemos organizar o nosso dockerfile. (dockerfile feito nessa aula está nessa mesma pasta.)
+    
+    Para validar o dockerfile gerado vamos fazer um build para gerar a imagem e testar{ 
+        - docker build -t gabrielrodriguesdev/laravel:latest .
+    }
+    
+    O Laravel tem um comando que sobe o nosso servidor web que é:
+    "php laravel/artisan serve" (damos um laravel\artisan pois precisamos acessar a pasta do artisan para rodar o comando). A nossa imagem atual ela só gera um container com o laravel instalado, caso queiramos que o web server seja executado temos que rodar o comando na mão atualmente.
+
+    Para resolver esse caso vamos trabalhar com o entrypoint no nosso dockerfile
+
+
+    Após adicionar o entrypoint podemos realizar um novo build e em seguida tentar rodar o container sobre a nova imagem {
+        - docker run --rm --name laravel -p 8000:8000 gabrielrodriguesdev/laravel
+    }
+
+    Após isso ao acessar o localhost:8000 deveria aparecer algo, mas não aparece. Isso acontece pois o artisan expoem o ambiente de desenvolvimento sobre um ip especifico:http://127.0.0.1:8000 e não temos acesso a esse ip, apenas a porta
+    portanto precisamos alterar o host ao executar o artisan.
+
+    Para passarmos argumentos ao artisan no momento do entrypoint usamos o CMD, então no dockerfile vamos adicionar o CMD fazendo um mapeamento do host (isso é permitido direto pelo artisan é um parametro.)
+
+    Poderiamos passar o argumento direto no entrypoint mas o CMD é mutavel caso precisamos
+    alterar o host podemos fazer isso no momento de rodar o container já com o entrypoint não teriamos que mudar o dockerfile e buildar a imagem de novo
+
+
+    Gerando o build e rodando container sobre nossa imagem, acessando o localhost:8000 poderemos ver o laravel em execução {
+        - docker build  -t gabrielrodriguesdev/laravel:latest .
+        - docker run --rm -d --name laravel -p 8000:8000 gabrielrodriguesdev/laravel
+    }
+
+    Caso queiramos analisar o container em execução podemos acessar os logs {
+        - docker logs laravel {
+            Aqui podemos ver que o host em execução é http://0.0.0.0:8000
+        }
+    }
+
+    Conclusão: Qualquer pessoa que tenha essa imagem ao executar um container com base nessa imagem conseguirá ter o laravel em execução, podendo até alterar o host ou a porta no momento do docker run (execução do container) isso porq usamos essas parametrizações no CMD que é alteravel. {
+        - docker run --rm -d --name laravel -p 8000:8000 gabrielrodriguesdev/laravel --host=0.0.0.0 --port=80001
+
+        Com isso estou dizendo que meu laravel vai rodar no host 
+        0.0.0.0 na porta 8001
+        }
+}

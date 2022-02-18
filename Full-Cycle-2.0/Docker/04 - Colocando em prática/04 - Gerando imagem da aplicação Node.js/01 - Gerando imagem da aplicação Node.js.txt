@@ -1,0 +1,31 @@
+Gerando uma imagem da aplicação Node.js {
+    Nesse exemplo vamos criar uma imagem a  partir do container que criamos na aula anterior {
+        Sequencia de comandos
+
+        - Cria o arquivo Dockerfile {
+            #Imagem node:15
+            FROM node:15
+
+            #Configurando o caminho abaixo como caminho de trabalho
+            WORKDIR /usr/src/app
+
+            #Copiando tudo que está na minha pasta local para a workdir do container
+            COPY . .
+
+            #Expondo a porta 3000
+            EXPOSE 3000
+
+            #Executando o comando node index.js para subir um servidor
+            CMD [ "node", "index.js" ] 
+
+            - Após isso vamos buildar a imagem: docker build -t gabrielrodriguesdev/salve-express .{
+
+                Buildando a imagem criada a partir de uma pasta local
+            }
+
+            - Subindo um contaier com base na imagem buildada: docker run -p 3000:3000 gabrielrodriguesdev/salve-express:latest {
+                    - Ao executar o container devido ao CMD ele já vai startar com o localhost:3000 acessivel
+            }
+        }
+    }
+}
