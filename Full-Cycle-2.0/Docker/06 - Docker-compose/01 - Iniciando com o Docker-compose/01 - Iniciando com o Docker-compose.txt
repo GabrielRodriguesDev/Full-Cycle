@@ -1,0 +1,9 @@
+Iniciando com o Docker-compose {
+    Docker compose é uma ferramenta complementar ao docker que baseado em um arquivo de manisfesto  (YAML) ele cosegue pegar todos os container que você quer subir, ele sobe de uma vez de forma automatica.
+
+    - Docker compose é um arquivo que otimiza o processo para os container (mesma funcionalidade do dockerfile, porém o docker file é para montar imagens)
+
+    - Docker compose é um arquivo yaml então deve ter os devidos espaçamentos.
+
+    - Para buildar os containers conforme manda o arquivo docker-compose é necessário rodar o seguinte comando: docker-compose up (builda as imagens e sobe o container) e o docker-compose down que derruba os containerrs dessa imagem.
+}

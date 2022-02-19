@@ -1,0 +1,16 @@
+Buildando imagens com Docker-compose {
+    - Durante o dia a dia não raramente usaremos imagens prontas, disponiveis nos hubs para usar no nosso docker-compose, geralmente usamos nossas próprimas imagens que são criadas a partir do dockerfile, portanto no docker-compose podemos criar um container a partir de uma imagem buildada através de um dockerfile disponivel em nossa máquina.
+
+
+    Comandos uteis {
+        docker-compose up -d --build {
+            Executando os container a partir de um docker-compose (docker-compose up)
+            o -d é para executar em segundo plano sem para o terminal
+            já o --build ele valida se as imagens buildadas anteriomente o dockerfile delas estão diferente do de agora, caso esteja refaz o build como forma de atualização.
+        }
+
+        docker-compose ps {
+            Lista os container que estão rodando a partir de um docker-compose
+        }
+    }
+}

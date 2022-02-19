@@ -3,5 +3,5 @@ Otimização utilizando  Multistage {
 
     - Nessa aula queremos criar um container novamente do laravel, porém usando o nginx como proxy reverso. 
 
-    - Usaremos o multistage para melhorar o desempesnho nas contrução de imagens e execução dos containers....
+    - Usaremos o multistage para melhorar o desempenho nas contrução de imagens e execução dos containers....
 }

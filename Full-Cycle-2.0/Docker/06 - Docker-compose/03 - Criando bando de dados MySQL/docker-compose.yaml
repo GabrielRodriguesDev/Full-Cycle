@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0 ##Comando unico do MySQL para iniciar o BD  (Unico)
+    container_name: db
+    restart: always ##Se o container cair, reinciar automaticamente
+    tty: true #Habilitando o tty para possiblitar a interação com o container 
+    volumes:
+      - ./mysql:/var/lib/mysql ##Criando uma vinculação através do volume 
+    environment: ##Variaveis de ambiente pré-estabelecidas
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - node-network
+
+networks: 
+  node-network:
+    driver: bridge
+  
+
+

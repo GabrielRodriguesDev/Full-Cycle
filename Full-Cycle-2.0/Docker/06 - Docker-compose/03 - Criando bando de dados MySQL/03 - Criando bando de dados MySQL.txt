@@ -1,0 +1,35 @@
+Criando bando de dados MySQL {
+    - Ao criar um banco de dados com o Docker a maior preocupação é a persistencia dos dados pois um container quando ele sai do ar ele perde todas as alterções que foram feitas nele no periodo de execução, então nesse caso é impresendivel usar os volumes para mapear o container a fins de garantir a persistencia, tudo que é alterado ou salvo no container, reflete no volume e caso o container caia ou saia do ar o volume vai conter os dados....
+
+    Exemplo de um container que usa a pasta local mysql como volume, portanto o  bd fica salvo localmente pelo binding de volume, e caso o container caia, você tem a informação local, e só subir o container na mesma config que ele também vai ter os dados.
+
+    Exemplo -> docker-compose {
+
+        ##inicio
+
+            version: '3'
+
+            services:
+
+            db:
+                image: mysql:5.7
+                command: --innodb-use-native-aio=0 ##Comando unico do MySQL para iniciar o BD  (Unico)
+                container_name: db
+                restart: always ##Se o container cair, reinciar automaticamente
+                tty: true #Habilitando o tty para possiblitar a interação com o container 
+                volumes:
+                - ./mysql:/var/lib/mysql ##Criando uma vinculação através do volume 
+                environment: ##Variaveis de ambiente pré-estabelecidas
+                - MYSQL_DATABASE=nodedb
+                - MYSQL_ROOT_PASSWORD=root
+                networks:
+                - node-network
+
+            networks: 
+            node-network:
+                driver: bridge
+
+        #fim
+
+    }
+}

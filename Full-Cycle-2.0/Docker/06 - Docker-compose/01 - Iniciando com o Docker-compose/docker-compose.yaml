@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  laravel:
+    image:
+    container_name:
+    networks:
+
+  nginx:
+    image:
+    container_name:
+    networks: 
+    ports: 8080:80
+
+
