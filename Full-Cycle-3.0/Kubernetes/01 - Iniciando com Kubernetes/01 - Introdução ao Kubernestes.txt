@@ -1,0 +1,30 @@
+Kubernetes {
+    "Kubernetes (k8s) é um produto Open Source utilizado para automatizar a implantação
+    o dimensionamento e o gerenciamento de aplicativos em contêiner." -- Site Oficial
+
+    Pontos Importantes {
+        - Kubernetes é disponibilizado através de um conjunto de APIs
+        - Normalmente acessamos a API usando a CLI: kubectl
+        - Tudo é baseado em estado. Você configura o estado de cada objeto
+        - Kubernetes Master ---> Controla o processo que todos os outros nós vão fazer
+            - Kube-apiserver
+            - Kube-controller-manager
+            - Kube-scheduler
+        - Outros Nodes
+            - Kubelet
+            - Kubeproxy
+    }
+
+    Dinâmica "superficial" {
+        * Pods: Unidade que contém os containers provisionados
+        * O Pod representa os processos rodando no cluster
+
+        Estrutura {
+
+            Máquina
+             Possui -> Nó
+                     Possui -> Pod  
+            Uma máquina possui os nós e os nós possuem os pods
+        }
+    }
+}

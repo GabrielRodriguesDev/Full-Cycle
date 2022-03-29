@@ -1,0 +1,14 @@
+Criando aplicação de exemplo de imagem {
+    - Criando arquivo em go que sobe um servidor {
+         arquivo server.go
+    }
+
+    - Criando dockerfile para subir o container da aplicação em go {
+        Realizando o build com base no dockerfile e executando o container {
+            - docker build -t gabrielrodriguesdev/salve-go .
+            - docker run --rm -p 80:80 gabrielrodriguesdev/salve-go .
+        }
+    }
+
+
+}

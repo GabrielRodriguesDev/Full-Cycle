@@ -1,0 +1,5 @@
+Kind {
+    kind é uma ferramenta para executar clusters locais do Kubernetes usando “nós” de contêiner do Docker.
+    kind foi projetado principalmente para testar o próprio Kubernetes, mas pode ser usado para desenvolvimento 
+    local ou CI.
+}

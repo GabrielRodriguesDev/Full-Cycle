@@ -1,0 +1,12 @@
+Cluster com o kind {
+    kind create cluster -> Processo de instalação de um novo cluster
+
+    kubectl cluster-info --context kind-kind ->  {
+        Comando para se conectar no nosso cluster que criamos (kind), a conexão em cluster
+        é feita pelo kubectl que nos provém esse serviço de forma local, entao podemos conectar
+        em diversos cluster (1 de cada vez), desde colocamos o conexto certo na conexão  --context kind-kind
+    }
+
+    kubectl get nodes -> Retorna todos os nodes do seu cluster, no caso do kind só tem um
+
+}

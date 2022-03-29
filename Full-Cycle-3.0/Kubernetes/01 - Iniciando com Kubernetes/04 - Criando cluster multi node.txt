@@ -1,0 +1,29 @@
+Criando cluster multi node {
+
+    - kind get clusters -> Mostrar todos os clusters criandos usando o kind
+
+    - kind delete cluesters kind -> Deletando o cluster com o nome kind
+
+    -- Nesse momento quero o nosso objetivo é criar um cluester com diversos nós, portanto temos
+        que configurar o arquivo do kind.yaml, e quando formos criar um cluster passamos esse arquivo como parametro
+        lembrando que isso é algo especifico do kind.
+
+    - kind create cluster --config=k8s/kind.yaml -> Criando um cluster com nós mulitplos a partir de um arquivo
+        de configuração (.yaml) (Isso parece ser algo especifico do kind).
+
+    - kubectl cluster-info --context kind-clustergabriel -> {
+        Conectando no cluster através do kubectl
+    }
+
+    - kubectl get nodes -> {
+        Podemos notar que temos 4 nodes rodando, sendo eles um control-plane (master) e outros
+        3 de trabalho, o mesmo vale se dermos um docker ps
+    }
+
+    - docker ps -> Conseguimos ver que temos 4 containers rodando, que se refere aos 4 nodes
+
+    - kubectl config get-clusters -> {
+        Retorna a listagem de clusters registrados no kube.config 
+    }
+
+}
