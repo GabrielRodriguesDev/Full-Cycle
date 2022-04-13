@@ -1,0 +1,31 @@
+Trabalhando com  Pods {
+
+    Pod {
+            É o menor objeto do Kubernetes, dentro de um pod você vai ter seu container rodando.
+            Pod = Uma máquina no Kubernetes, "uma caixinha onde o seu container fica rodando".
+
+            Observação: Não é só um container que roda dentro de um pod, podemos ter mais containers
+            dentro do mesmo pod, mas a via de regra é que tenha apenas um container rodando e um pod, pois
+            se o pod cair apenas um container será derrubado.
+    }
+
+    Criando o primeiro pod {
+
+            kind create cluster -> Processo de instalação de um novo cluster (Isso porque não estavam criados)
+
+            kubectl cluster-info --context kind-kind -> Se conectando no cluster
+
+            docker build -t gabrielrodriguesdev/salve-go . -> Criando a imagem a ser usada
+
+            kubectl apply -f pod.yam -> Criando pod (-f é para file, onde buscar o arquivo yaml)
+
+            kubectl get pods -> Lista os pods em execução
+
+            kubectl port-forward pod/goserver 8000:80 -> {
+                Faz o direcionamento de porta do kubernetes
+                para nossa máquina
+            }
+
+            kubectl delete pod goserver -> Deletando o pod
+    }
+}

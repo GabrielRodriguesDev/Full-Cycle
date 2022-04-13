@@ -1,0 +1,43 @@
+Deployment {
+    
+    Conceito Documentação Kubernetes {
+        Você descreve um estado desejado em uma implantação e a implantação
+        Controlador altera o estado real para o estado desejado a uma taxa controlada.
+        Você pode definir implantações para criar novos ReplicaSets ou remover
+        implantações existentes e adotar todos os seus recursos com novas implantações.
+    } 
+
+    Hierarquia Kubernetes {
+        Deployment -> ReplicaSet -> Pod
+
+        Ao criar um deployment esse deployment cria um replicaset e esse replicaset
+        cria os pods. Caso eu gere uma nova versão do deployment, baseado nessa mudança
+        ele vai gerar um novo replicaset, vai matar os pods do replicaset anterior,
+        e esse novo replicaset vai criar os pods atualizados.
+        
+        Isso tem quase zero downtime, pois ele mata alguns pode enquanto sobe outros
+        ou seja nunca fica sem pods.
+
+        Obs -> Ele mata os pods do replicaset antigo e gera os pods com base no replicaset
+        atualizado, porém ele não exclui o replicaset antigo, se você rodar:
+         kubectl get replicasets vai notar que estará o replicaset antigo e o atualizado na
+         lista.
+    }
+
+    Sequencia de comandos {
+        kubectl apply -f k8s/deployment.yaml -> {
+            Criando pods a partir de um deployment.
+            Os nomes dos pods segue o seguinte parametro: 
+                NOME Deployment + NOME ReplicaSet + NOME Container
+        }
+        kubectl get pods -> {
+            Liste todos os pods em execução
+        }
+        kubectl get deployments -> {
+            Lista os deployments
+        }
+        kubectl get replicasets -> {
+            Lista os replicasets
+        }
+    }
+}

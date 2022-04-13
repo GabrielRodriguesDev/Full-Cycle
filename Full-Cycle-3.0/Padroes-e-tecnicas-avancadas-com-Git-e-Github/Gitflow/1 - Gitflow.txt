@@ -1,0 +1,65 @@
+Gitflow {
+    É um e métogolia que faz o uso de uma extensão que visa otimizar o processo de git, porém complica quando realizamos o trabalho com pull requests.
+    Portanto é importante aprender o conceito e aplicar ele no dia a dia com o uso do git normal.
+    
+    Sequencia de comandos {
+        - git init {
+            Inicializando um repositório de forma "default" assim garantindo que não sejamos obrigados a usar o git flow 100%
+        }
+        - git flow init {
+            Inicializando o git flow sobre o repositório, após executar esse comando é necessário  iformar alguns parametros para o uso da extensão, como por exemplo qual é o nome da branch que será usada em produção (por padrão eles sugerem a master).
+        }
+        - git flow feature start welcome {
+            Com isso estamos inicianco uma nova branch de feature, no qual poderemos implementar todos os recursos e em seguida subir para a próxima branch
+
+            Como configuramos o prefixo o nome dessa nova branch será feature/welcome
+        }
+
+        ## Após criarmos um arquivo qualquer na nossa nova branch, ele não estará rastreado portanto vamos passar par ao próximos passos para subir esse arquivo para a branch até que chege a main (que seria a de "produção").
+
+        - git add .
+        - git commit -m ''add index'
+
+        ## Com o commit em tese encerramos o "ciclo" feature portanto podemos parar de usar essa branch, mas como a feature é referente a uma demanda por isso está até no nome feature/welcome temos que excluir a branch
+
+        - git flow feature finish welcome {
+            Com isso o automaticamente ele vai fazer um merge entre a branch feature/welcome e a branch develop, garantindo que o develop seja atualizado com as novas "features"
+            Após isso ele remove a branch feature/welcome, em sequida altera o uso para a brach develop
+        }
+
+        ## Agora que temos a nossa feature na branch develop, estamos pensando em gerar um realese e subir essa nova feature para a produção
+
+        - git flow realese start 0.1.0 {
+            Com isso ele vai gerar uma nova branch realese/0.1.0 baseado na branch develop que é a que tem as mudanças feitas pela feature
+
+            Após isso ele altera para a nova brach
+        }
+
+        ## A branch de realese pode receber modificações depois de criada, podemos alterar os arquivos presente na branch
+
+        - git flow realease finish 0.1.0 {
+            Faz um merge coma branch main, cria uma nova tag com a versão 0.1.0 (obrigatório colocar uma mensagem).
+
+            Após isso ele vai realizar também um merge no develop garantindo que o develop tenha as informações tão atualizadas quanto a branch main, pois podemos alterar os arquivos na realese.
+
+            Após os dois merge e gerar a tag, a branch é removida e realizamos um checkout para o develop novamente
+        }
+
+        ## Após subimos um novo realese baseado na nossa feature, tivemos um problema em produção e vamos precisar de manuteção.
+
+        - git flow bugfix star welcome {
+            Ele vai gerar uma nova branch com base na main (onde possui o bug), lembrando que isso deve ser usado para bugs em produção
+        }
+
+        - git add .
+        - git commit -m 'ajuste welcome'
+
+        ## Após arrumarmos o bug e commitarmos podemos finalizar a branch
+
+        - git flow bugfix finish welcome {
+            Realizar um merge no main, solicita a criação de uma nova tag.
+            Em seguida já atualiza o develop, e remove a nova branch (bugfix).
+        }
+
+    }
+}

@@ -1,0 +1,10 @@
+apiVersion: v1 #Definindo a versão, para questões de compatibilidade.
+kind: Pod #Definindo o tipo.
+metadata: #Definindo os metadados (Informações)
+  name: "goserver" #Nome do pod
+  labels: #Definindo Etiqueta
+    app: "goserver"#Definindo qual é a etiqueta do pod
+spec: #Definindo a contstrução do pod
+  containers: #Container
+    - name: "goserver"
+      image: "gabrielrodriguesdev/salve-go:latest" 

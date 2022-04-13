@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+
+
+  node:
+      build:
+        context: node
+        dockerfile: Dockerfile
+      image: gabrielrodriguesdev/node:prod  
+      container_name: app
+      networks:
+        - node-network
+      volumes:
+        - ./node:/usr/src/app
+      tty: true
+      ports: 
+        - "3000:3000"
+
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0 ##Comando unico do MySQL para iniciar o BD  (Unico)
+    container_name: db
+    restart: always ##Se o container cair, reinciar automaticamente
+    tty: true #Habilitando o tty para possiblitar a interação com o container 
+    volumes:
+      - ./mysql:/var/lib/mysql ##Criando uma vinculação através do volume 
+    environment: ##Variaveis de ambiente pré-estabelecidas
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - node-network
+
+networks: 
+  node-network:
+    driver: bridge
+  
+
+

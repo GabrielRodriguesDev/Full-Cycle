@@ -1,0 +1,27 @@
+ReplicaSet {
+    Conceito Documentação Kubernetes {
+        A finalidade de um ReplicaSet é manter um conjunto estável de pods de 
+        réplica em execução a qualquer momento. Como tal, é frequentemente usado 
+        para garantir a disponibilidade de um número especificado de Pods idênticos.
+    }
+
+    Minha conclusão sobre o ReplicaSet (Conceito) {
+        ReplicaSet é um seletor usado na criação de pods declarativo (.yaml)
+        que indica um número de réplicas que dever ser geradas a partir de um modelo
+        pré especificado no yaml, portanto ele cuida para sempre tenha os pods
+        especificados (replicas: 10 -> Portanto ele cuida para sempre ter 10 pods
+        identicos rodando (com base no pod modelo caso eu venha excluir um pod totalizando
+        9 pods em execução o ReplicaSet cuida de criar mais um totalizando os 10 declarados))
+    }
+
+    Problemas em relação ao ReplicaSet {
+        Para atualizar os pods que estão sendo "gerenciados" pelo ReplicaSet é nece-
+        ssário derrubar pod a pod e subir novamente, mesmo que que eu rode o Yaml
+        não é o sufiente para atualizar os pods.
+
+        Simulando um cenário no qual tenho um cluster rodando um replicaset com 5 pods,
+        e nesses pods roda uma imagem própria, ao atualizar essa imagem docker e subir
+        e alterar o yaml referente a criação dos pods e rodar o yaml, os pods não irão atualizar
+        a imagem do container, só será atualizada quando eu derrubar pod a pod e subir novamente.
+    }
+}

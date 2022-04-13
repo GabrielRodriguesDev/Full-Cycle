@@ -1,0 +1,28 @@
+Go {
+    Construindo a imagem a partir do Dockerfile {
+
+        - docker build --no-cache -t gabrielrodriguesdev/codeeeducation .
+
+    }
+
+    Executando o container a partir da imagem criada {
+
+        - docker run --name desafio1 -d -p 3000:3000  gabrielrodriguesdev/codeeeducation
+        
+    }
+}
+
+Mysql {
+    Criando tabela {
+        - docker exec -it db bash
+        - mysql -uroot -p
+            # digita a senha root
+        #Pronto estamos dentro do BD
+        - show database 
+            #Verificando se o banco foi criado
+        - use nodedb;
+        - create table people(id int not null auto_increment, name      varchar(255), primary key(id));
+        - desc people
+            #Descrever a tabela criada
+    }
+}
