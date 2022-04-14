@@ -1,0 +1,19 @@
+Acesso a API do Kubernetes {
+        O Kubectl é uma ferramenta de linha de comando projetada para gerenciar 
+        objetos e clusters Kubernetes, ele se conecta com a API do Kubernetes
+        através de certificados autenticados.
+
+        API Kubernetes {
+            
+            Kubectl proxy --port=8080 -> {
+                Criando um proxy para que haja o redirecionamento para  API do Kubernetes
+                portanto ao acessar a porta 8080 do nosso host, seremos direcionados
+                a API.
+
+                Ao acessar a essa API conseguimos ver as informações sobre o Kubernetes
+                pois todos os comandos que são rodados no kubectl é interagindo com
+                a API do Kubernetes, claro que essa api que estamos testando é do servidor
+                do kind instalado localmente, mas o funcionamento é o mesmo para as demais.
+            }
+        }
+}

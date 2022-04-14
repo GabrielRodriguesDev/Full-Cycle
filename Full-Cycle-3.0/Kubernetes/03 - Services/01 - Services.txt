@@ -1,0 +1,26 @@
+Services {
+    Conceito Documentação Kubernetes {
+        Uma maneira abstrata de expor um aplicativo em execução em um conjunto
+        de Pods como um serviço.
+
+        Um serviço no Kubernetes é uma abstração que define um conjunto lógico de
+        Pods e uma política pela qual acessá-los. Serviços permitem um baixo 
+        acoplamento entre os Pods dependentes. Um serviço é definido usando YAML 
+        (preferencialmente) ou JSON, como todos objetos Kubernetes. O conjunto de 
+        Pods selecionados por um Serviço é geralmente determinado por um seletor de 
+        rótulos LabelSelector (veja abaixo o motivo pelo qual você pode querer um 
+        Serviço sem incluir um seletor selector na especificação spec).
+
+        Embora cada Pod tenha um endereço IP único, estes IPs não são expostos 
+        externamente ao cluster sem um Serviço.
+    }
+
+    Minha conclusão {
+        O service é um recurso que cuida de expor o seu aplicativo para o mundo externo
+        o service abstrai uma quantidade de pods, ou seja se conectamos a esses pods
+        através desse service, como os pods são imutavéis e podem morrer a qualquer hora
+        se conectar direto a eles seria um problema, portanto se conectamos a um serviço
+        que possui um IP interno, e ele se comunica com os pods pré estabelecidos na criação
+        do service.
+    }
+}

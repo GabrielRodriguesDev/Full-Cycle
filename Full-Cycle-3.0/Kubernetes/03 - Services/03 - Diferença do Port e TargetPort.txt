@@ -1,0 +1,15 @@
+Port && TargetPort (Services) {
+    Port {
+        Port é uma configuração do arquivo yaml no qual podemos especificar
+        a porta de conexão com o service, portanto se no yaml, configurarmos 
+        Port: 556, estamos especificando que podemos conectar no nosso service
+        através da porta 556 (claro que ainda é necessário fazer o redirecionameno).
+    }
+
+    TargetPort {
+        TargetPort é uma configuração do arquivo yaml que especificamos a porta de conexão
+        do pod/container, então podemos se conectar no serviço pela porta 556, porém o serviço
+        vai se conectar com o container na porta 7000 pois configuramos o TargetPort: 7000
+        no arquivo yaml e é realmente essa porta que o container expõem
+        }
+}

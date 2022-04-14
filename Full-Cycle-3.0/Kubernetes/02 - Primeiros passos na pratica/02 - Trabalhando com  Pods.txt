@@ -22,7 +22,7 @@ Trabalhando com  Pods {
             kubectl get pods -> Lista os pods em execução
 
             kubectl port-forward pod/goserver 8000:80 -> {
-                Faz o direcionamento de porta do kubernetes
+                Faz o direcionamento de porta do pod
                 para nossa máquina
             }
 

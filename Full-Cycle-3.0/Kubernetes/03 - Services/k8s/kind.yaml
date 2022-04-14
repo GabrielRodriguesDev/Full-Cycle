@@ -1,0 +1,9 @@
+kind: Cluster #kind = Tipo
+apiVersion: kind.x-k8s.io/v1alpha4
+name: clustergabriel
+
+nodes: #Definindo os nós do cluster
+  - role: control-plane #Definindo nó mestre
+  - role: worker #Definindo nó de trabalho
+  - role: worker #Definindo nó de trabalho
+  - role: worker #Definindo nó de trabalho

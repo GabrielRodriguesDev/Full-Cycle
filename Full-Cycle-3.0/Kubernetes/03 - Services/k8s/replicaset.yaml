@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: ReplicaSet
 metadata:
   name: goserver
   labels:
@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: goserver
-  replicas: 10
+  replicas: 2
   template:
     metadata: #Definindo os metadados (Informações)
       labels: #Definindo Etiqueta
@@ -16,4 +16,4 @@ spec:
     spec: #Definindo a contstrução do pod
       containers: #Container
         - name: "goserver"
-          image: "gabrielrodriguesdev/salve-go:v2" 
+          image: "gabrielrodriguesdev/salve-go:latest" 

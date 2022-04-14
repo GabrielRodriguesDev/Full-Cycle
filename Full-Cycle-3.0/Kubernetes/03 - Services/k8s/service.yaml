@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: goserver-service
+spec: #Especificação do serviço
+  selector: #Responsavél por filtrar todos os pods que estaram incorporados nesse serviço
+    app: goserver #Pegar todos os pods que tenham o matchlabels goserver 
+  type: ClusterIP
+  ports:
+    - name: goserver-service
+      port: 80 #Porta de conexão com o serviço
+      targetPort: 9000 #Porta de conexão do container no qual o serviço vai se conectar
+      protocol: TCP

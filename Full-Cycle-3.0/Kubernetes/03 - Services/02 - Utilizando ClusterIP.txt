@@ -1,0 +1,42 @@
+Utilizando o ClusterIp {
+        
+        - Criando dockerfile para subir o container da aplicação em go {
+        Realizando o build com base no dockerfile e executando o container {
+            - docker build -t gabrielrodriguesdev/salve-go .
+            - docker run --rm -p 80:80 gabrielrodriguesdev/salve-go .
+            
+        }
+
+        kind create cluster -> {
+            Processo de instalação de um novo cluster
+        }
+
+        kubectl cluster-info --context kind-kind ->  {
+        Comando para se conectar no nosso cluster que criamos (kind), a conexão em cluster
+        é feita pelo kubectl que nos provém esse serviço de forma local, entao podemos conectar
+        em diversos cluster (1 de cada vez), desde colocamos o conexto certo na conexão  --context kind-kind
+    }
+
+        kubectl apply -f k8s/deployment.yaml -> {
+            Criando pods a partir de um deployment.
+            Os nomes dos pods segue o seguinte parametro: 
+                NOME Deployment + NOME ReplicaSet + NOME Container
+        }
+        
+        kubectl apply -f k8s/service.yaml {
+            Criando serviço do cluster
+        }
+
+        kubectl get svc {
+            Listando os serviços do cluster
+        }
+
+        kubectl port-forward svc/goserver-service 8000:80 {
+            Mapeando a porta 8000 para se comunicar com a porta
+            80 do service e com isso o service cuida de fazer o 
+            redirecionameno para um dos pods que estão no selector
+            isso se o pod (container) estiver na mesma porta que o service, caso não esteja
+            é necessário especificar no yaml.
+        }
+
+}

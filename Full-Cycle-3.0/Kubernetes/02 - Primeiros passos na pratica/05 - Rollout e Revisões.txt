@@ -1,0 +1,22 @@
+Rollout  {
+    Mecanismo de reversão integrado do kubernetes
+}
+
+Sequencia de comandos {
+    kubectl rollout history deployment goserver -> {
+        Ele me exibe as revisões que tenho do objeto selecionado (deployment)
+    }
+
+    kubectl rollout undo deployment goserver -> {
+        Volta o objeto deployment na ultima versão (anterior a atual).
+    }
+
+    kubectl rollout undo deployment goserver  --to-revision=4 -> {
+        Volta o objeto deployment na versão especificad no parametro
+    }
+
+    Obs -> Ao voltar o rollout em processo ele derruba os pods e cria novos pods,
+    com base no replicaset da versão especificada, por isso que os replicasets não
+    são excluidos quando são deixados de ser usados, ficam guardados para fazer
+    o rollout caso necessário.
+}
